@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ministério Apostólico Um Novo Tempo</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http: https: data: blob:;">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="img/img5-removebg-preview.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+</head>
+
+<body id="topo">
+
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <img src="img/img5-removebg-preview.png" alt="Logo da Igreja" class="logo">
+                <div class="logo-text">
+                    <h1>Ministério Apostólico Um Novo Tempo </h1>
+                    <h1>Semeando Vidas</h1>
+                </div>
+            </div>
+            <a href="#pedido-oracao" class="btn-header">Envie seu Pedido de Oração</a>
+        </div>
+
+        <!-- 👇 Menu de navegação vai logo abaixo do logo -->
+        <nav>
+            <a href="#topo" class="inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#cultos">Cultos</a>
+            <a href="#eventos">Eventos</a>
+            <a href="#contato">Contato</a>
+
+            <div class="dropdown">
+                <button class="dropbtn">Ministérios <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="#" target="_blank">Vila Natal</a>
+                    <a href="#" target="_blank">Parque Cocaia</a>
+                    <a href="#" target="_blank">Unidade 3</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <nav>
+        <a href="#topo" class="inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#cultos">Cultos</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#contato">Contato</a>
+
+        <!-- Dropdown Nossas Unidades -->
+        <div class="dropdown">
+            <button class="dropbtn">Ministérios <i class="fas fa-chevron-down"></i></button>
+            <div class="dropdown-content">
+                <a href="#" target="_blank">Vila Natal</a>
+                <a href="#" target="_blank">Parque Cocaia</a>
+                <a href="#" target="_blank">Unidade 3</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="sobre" class="sobre">
+        <div class="sobre-container">
+            <div class="sobre-imagem">
+                <img src="img/" alt="Foto da Igreja" />
+            </div>
+            <div class="sobre-texto">
+                <h2>Sobre Nós</h2>
+                <p>
+                    O <strong>Ministério Ap Um Novo Tempo</strong> é um lugar de fé, amor e
+                    esperança. Nossa missão é <em>acolher famílias, semear vidas e levar a
+                        Palavra de Deus</em> a todos que desejam um novo tempo em sua caminhada
+                    espiritual.
+                </p>
+                <p>
+                    Aqui, você encontrará uma comunidade unida, cultos abençoados e um
+                    ambiente de crescimento espiritual. Estamos de portas abertas para você
+                    e sua família.
+                </p>
+                <a href="#cultos" class="btn-sobre">Conheça nossos cultos</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="pastor" class="pastor">
+        <div class="pastor-container">
+            <div class="pastor-imagem">
+                <img src="img/pastor.jpg" alt="Pastor Presidente" />
+            </div>
+            <div class="pastor-texto">
+                <h2>Apostolo Presidente</h2>
+                <h3>Marcio Alcantara</h3>
+                <p>
+                    Com uma vida dedicada à fé e à Deus, o Apostolo Presidente
+                    Marcio Alcantara tem liderado nosso ministério com sabedoria, amor e
+                    compromisso espiritual. Sob sua liderança, muitas vidas têm sido
+                    transformadas e famílias têm encontrado esperança.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="cultos" class="cultos">
+        <div class="container">
+            <h2>Horários dos Cultos</h2>
+            <div class="cultos-grid">
+
+                <div class="culto-card">
+                    <i class="fas fa-dove"></i>
+                    <h3>Culto de Busca do Espírito Santo</h3>
+                    <p>Quarta-feira - 20h00</p>
+                </div>
+                <div class="culto-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>Culto de Libertação</h3>
+                    <p>Sexta-feira - 20h00</p>
+                </div>
+                <div class="culto-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Culto De Jovens</h3>
+                    <p>Sábado - 19h30</p>
+                </div>
+
+                <div class="culto-card">
+                    <i class="fa-solid fa-people-roof"></i>
+                    <h3>Culto da Família</h3>
+                    <p>Domingo - 18h00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="eventos" class="eventos">
+        <div class="container">
+            <h2>📅 Próximos Eventos</h2>
+            <div class="eventos-grid">
+
+                <div class="evento-card">
+                    <h3>12° Aniversário da Igreja</h3>
+                    <p class="data">30 de Agosto - 19h00</p>
+                    <p>Tema: Nunca Abandone a Fé </p>
+                </div>
+
+                <div class="evento-card">
+                    <h3>Culto das Crianças</h3>
+                    <p class="data">18 de Outubro - 19h00</p>
+                    <p>Mas Jesus chamou a si as crianças, dizendo: Deixai vir a mim os pequeninos, e não os impeçais,
+                        porque dos tais é o reino de Deus.
+                        Mateus 19:14</p>
+                </div>
+
+                <div class="evento-card">
+                    <h3>3° Vigilia - Tema Espírito Santo</h3>
+                    <p class="data">Domingo 1º de Setembro - 20h00</p>
+                    <p>.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="unidades" class="unidades">
+        <h2>🏛 Nossas Unidades</h2>
+        <p>Escolha uma unidade para ver mais informações:</p>
+
+        <div class="unidades-buttons">
+            <button class="btn-unidade active" data-unidade="1">Vila Natal</button>
+            <button class="btn-unidade" data-unidade="2">Parque Cocaia</button>
+            <button class="btn-unidade" data-unidade="3">Unidade 3</button>
+        </div>
+
+        <div class="unidade-content" id="unidade-1">
+            <h3>Vlia Natal - Endereço e Informações</h3>
+            <p>Rua Ingá Natal, 123 - Vila Natal, São Paulo</p>
+            <p>Telefone: (11) 99999-9999</p>
+            <p>Horários de Cultos: Quarta 20h00, Sexta 20h00 e Domingo 18h00</p>
+
+        </div>
+
+        <div class="unidade-content" id="unidade-2">
+            <h3>Parque Cocaia- Endereço e Informações</h3>
+            <p>Rua Exemplo 2, 456 - Bairro DEF, Cidade XYZ</p>
+            <p>Telefone: (11) 98888-8888</p>
+            <p>Horários de Cultos: Sexta 20h, Domingo 19h</p>
+            <p>Descrição: Unidade focada em crianças e ministério de louvor. Eventos especiais todos os meses.</p>
+        </div>
+
+        <div class="unidade-content" id="unidade-3">
+            <h3>Unidade 3 - Endereço e Informações</h3>
+            <p>Rua Exemplo 3, 789 - Bairro GHI, Cidade XYZ</p>
+            <p>Telefone: (11) 97777-7777</p>
+            <p>Horários de Cultos: Terça 20h, Sábado 19h</p>
+            <p>Descrição: Unidade voltada para ações sociais e atendimento comunitário.</p>
+        </div>
+    </section>
+
+    <section id="galeria" class="galeria">
+        <h2>📸 Nossa Galeria</h2>
+        <p>Confira momentos especiais dos nossos cultos e eventos.</p>
+
+        <div class="galeria-grid">
+            <div class="galeria-card">
+                <img src="img/img5-removebg-preview.png" alt="Foto do evento 1">
+            </div>
+            <div class="galeria-card">
+                <img src="img/img.jpg3.jpeg" alt="Foto do evento 2">
+            </div>
+            <div class="galeria-card">
+                <img src="img/foto3.jpg" alt="Foto do evento 3">
+            </div>
+            <div class="galeria-card">
+                <img src="img/foto4.jpg" alt="Foto do evento 4">
+            </div>
+            <!-- Adicione mais fotos conforme quiser -->
+        </div>
+    </section>
+
+    <section id="contato" class="contato">
+        <h2>Fale Conosco</h2>
+        <p class="subtitulo-contato">Entre em contato conosco através de um dos canais abaixo:</p>
+
+        <div class="contato-grid">
+            <div class="contato-card">
+                <div class="icon-circle">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Email</h3>
+                <p>ministerioap.novotempo@gmail.com</p>
+                <a href="mailto:ministerioap.novotempo.com" class="btn-contato">Enviar Email</a>
+            </div>
+
+            <div class="contato-card">
+                <div class="icon-circle">
+                    <a href="https://wa.me/5511911127755" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                <h3>WhatsApp</h3>
+                <p>(11) 91112-7755</p>
+                <a href="https://wa.me/5511911127755" target="_blank" class="btn-contato">Abrir no WhatsApp</a>
+            </div>
+            <div class="contato-card">
+                <div class="icon-circle">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Endereço</h3>
+                <p>Rua Agenor Klausnner, 250 - Jd Almeida Prado, São Paulo</p>
+                <a href="https://www.google.com/maps/place/Rua+Agenor+Klausnner,+250" target="_blank"
+                    class="btn-contato">Ver no Mapa</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!4v1755703160613!6m8!1m7!1s3CQC6JURFEv7MopG26XLnA!2m2!1d-23.77021677018643!2d-46.6884591170919!3f14.329995865000477!4f4.50880114378478!5f1.9587109090973311"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <section id="versiculo" class="versiculo">
+        <h2>📖 Versículo do Dia</h2>
+        <p id="versiculo-texto">Carregando versículo...</p>
+        <small id="versiculo-ref"></small>
+    </section>
+
+    <script>
+        async function carregarVersiculo() {
+            try {
+                const resposta = await fetch("https://bible-api.com/john%203:16?translation=almeida");
+                const dados = await resposta.json();
+                document.getElementById("versiculo-texto").innerText = dados.text;
+                document.getElementById("versiculo-ref").innerText = dados.reference;
+            } catch (e) {
+                document.getElementById("versiculo-texto").innerText = "Erro ao carregar versículo.";
+            }
+        }
+        carregarVersiculo();
+    </script>
+
+    <section id="pedido-oracao" class="pedido-oracao">
+        <h2>Pedido de Oração</h2>
+        <p class="subtitulo-oracao">Envie seu pedido e estaremos intercedendo por você.</p>
+
+        <!-- Mensagem de sucesso -->
+        <div id="success-msg" class="success-msg" style="display:none;">
+            🙏 Pedido enviado com sucesso! Estamos orando por você.
+        </div>
+
+        <form id="form-oracao" class="form-oracao">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="nome" placeholder="Seu nome" required />
+            </div>
+
+            <div class="input-group">
+                <i class="fab fa-whatsapp"></i>
+                <input type="tel" name="telefone" placeholder="(11) 99999-9999" required />
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-praying-hands"></i>
+                <textarea name="mensagem" rows="5" placeholder="Escreva seu pedido de oração" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-oracao">🙏 Enviar Pedido</button>
+        </form>
+    </section>
+
+    <style>
+        .pedido-oracao {
+            background: #f0f8ff;
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 15px;
+            max-width: 700px;
+            margin: 40px auto;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .pedido-oracao h2 {
+            font-size: 2rem;
+            color: #003366;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo-oracao {
+            color: #0059b3;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group i {
+            position: absolute;
+            top: 12px;
+            left: 10px;
+            color: #0059b3;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 12px 12px 12px 35px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            border-color: #0059b3;
+            box-shadow: 0 0 5px rgba(0, 89, 179, 0.5);
+            outline: none;
+        }
+
+        .btn-oracao {
+            background: linear-gradient(90deg, #0059b3, #0073e6);
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-oracao:hover {
+            background: linear-gradient(90deg, #0073e6, #0059b3);
+            transform: translateY(-2px);
+        }
+
+        .success-msg {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #c3e6cb;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        emailjs.init("VqkfN2Uf2hJKb6Vfh"); // substitua pela sua chave pública
+
+        const formOracao = document.getElementById('form-oracao');
+        const successMsg = document.getElementById('success-msg');
+
+        formOracao.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            emailjs.sendForm('MinistérioAp', 'template_zmnyle7', this)
+                .then(function () {
+                    successMsg.style.display = 'block'; // mostra mensagem de sucesso
+                    formOracao.reset(); // limpa campos
+                    setTimeout(() => { successMsg.style.display = 'none'; }, 5000); // esconde após 5s
+                }, function (error) {
+                    alert('Ocorreu um erro ao enviar. Tente novamente.');
+                    console.log('Erro EmailJS:', error);
+                });
+        });
+    </script>
+
+    <a href="#topo" class="topo-btn"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        const topoBtn = document.querySelector('.topo-btn');
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                topoBtn.style.display = 'block';
+            } else {
+                topoBtn.style.display = 'none';
+            }
+        });
+    </script>
+
+    <script>
+        const botoes = document.querySelectorAll('.btn-unidade');
+        const conteudos = document.querySelectorAll('.unidade-content');
+
+        botoes.forEach(botao => {
+            botao.addEventListener('click', () => {
+                // Remove a classe active de todos os botões
+                botoes.forEach(b => b.classList.remove('active'));
+                botao.classList.add('active');
+
+                // Esconde todos os conteúdos
+                conteudos.forEach(c => c.style.display = 'none');
+
+                // Mostra o conteúdo correspondente
+                const unidadeId = botao.getAttribute('data-unidade');
+                document.getElementById(`unidade-${unidadeId}`).style.display = 'block';
+            });
+        });
+    </script>
+
+
+
+</body>
+
+</html>
