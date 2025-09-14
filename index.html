@@ -4,83 +4,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
     <title>Ministério Apostólico Um Novo Tempo - Semeando Vidas</title>
-    <meta name="description"
-        content="Ministério Apostólico Um Novo Tempo - Transformando vidas através da Palavra de Deus.">
+    <meta name="description" content="Ministério Apostólico Um Novo Tempo - Transformando vidas através da Palavra de Deus.">
+    <meta name="author" content="Ministério Apostólico Um Novo Tempo">
+    <meta name="theme-color" content="#6a11cb">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ministério Apostólico Um Novo Tempo - Semeando Vidas">
+    <meta property="og:description" content="Transformando vidas através da Palavra de Deus.">
+    <meta property="og:image" content="img/img5-removebg-preview.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ruansantos2003.github.io/projeto-igreja/">
+
+    <!-- Fonts e Ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="img/img5-removebg-preview.png" type="image/png">
 </head>
 
 <body id="topo-pagina">
-
     <!-- Cabeçalho -->
-    <header>
+    <header role="banner">
         <div class="header-container">
             <div class="logo-text">
-                <img src="img/img5-removebg-preview.png" alt="Logo da Igreja" class="logo">
+                <img src="img/img5-removebg-preview.png" alt="Logo do Ministério Apostólico Um Novo Tempo" class="logo">
                 <div class="header-text">
                     <h1>Ministério Apostólico Um Novo Tempo</h1>
-                    <h2>Semeando Vidas site 2</h2>
+                    <h1>Semeando Vidas</h1>
                 </div>
             </div>
 
-            <nav class="navbar">
+            <!-- Navegação -->
+            <nav class="navbar" role="navigation" aria-label="Menu principal">
                 <ul class="nav-links">
                     <li><a href="#topo-pagina">Início</a></li>
                     <li><a href="#cultos">Cultos</a></li>
                     <li><a href="#sobre">Sobre Nós</a></li>
                     <li><a href="#ofertas">Ofertas</a></li>
-
                     <!-- Dropdown Filiais -->
                     <li class="dropdown">
                         <a href="javascript:void(0)">Filiais <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="https://ruansantos2003.github.io/projeto-igreja/" class="filial-link">Almeida
-                                    Prado
-                                </a></li>
-
+                            <li><a href="https://ruansantos2003.github.io/site-igreja2/" class="filial-link">Vila Natal</a></li>
                         </ul>
                     </li>
-
                     <li><a href="#contato">Contato</a></li>
                 </ul>
 
+                <!-- Redes Sociais -->
                 <div class="social-icons">
-                    <a href="https://instagram.com/ministerioapostolicoumnovotemp" target="_blank"><i
-                            class="fab fa-instagram"></i></a>
-                    <a href="https://facebook.com/se" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/ministerioapostolicoumnovotemp" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/se" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                 </div>
 
-                <button class="menu-toggle">☰</button>
+                <!-- Botão menu mobile -->
+                <button class="menu-toggle" aria-label="Abrir menu">☰</button>
             </nav>
         </div>
     </header>
 
-    <main>
-
-        <!-- Carrossel de fotos -->
+    <main id="conteudo-principal">
+        <!-- Carrossel -->
         <section class="carrossel">
             <div class="slides">
-                <div class="slide active" style="background: linear-gradient(135deg, #6a11cb, #2575fc);">
-                    <h2>Bem-vindo ao Ministério</h2>
-                    <p>Transformando vidas através da fé e da esperança</p>
+                <div class="slide active" style="background-image: url('img/imagem1.jpg');">
+                    <div class="overlay"></div>
+                    <div class="slide-content">
+                        <h2>Bem-vindo ao Ministério</h2>
+                        <h3>Semeando Vidas com Amor e Fé</h3>
+                        <p>Transformamos vidas diariamente com mensagens inspiradoras, cultos interativos e uma comunidade acolhedora.</p>
+                    </div>
                 </div>
-                <div class="slide" style="background: linear-gradient(135deg, #f7971e, #ffd200);">
-                    <h2>Cultos Inspiradores</h2>
-                    <p>Venha participar de momentos de oração e adoração</p>
+                <div class="slide" style="background-image: url('img/imagem2.jpg');">
+                    <div class="overlay"></div>
+                    <div class="slide-content">
+                        <h2>Cultos Inspiradores</h2>
+                        <h3>Momentos de Conexão com Deus</h3>
+                        <p>Participe de cultos semanais repletos de louvor, adoração e ensinamentos bíblicos.</p>
+                    </div>
                 </div>
-                <div class="slide" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
-                    <h2>Comunidade Unida</h2>
-                    <p>Construindo vínculos fortes e solidários</p>
+                <div class="slide" style="background-image: url('img/imagem3.jpg');">
+                    <div class="overlay"></div>
+                    <div class="slide-content">
+                        <h2>Comunidade Unida</h2>
+                        <h3>Construindo Laços de Solidariedade</h3>
+                        <p>Nosso ministério é uma família que promove eventos e ações sociais impactantes.</p>
+                    </div>
                 </div>
+
+                <div class="slide" style="background-image: url('img/bispaft.jpg');">
+                    <div class="overlay"></div>
+                    <div class="slide-content">
+                        <h2>Comunidade Unida</h2>
+                        <h3>Construindo Laços de Solidariedade</h3>
+                        <p>Nosso ministério é uma família que promove eventos e ações sociais impactantes.</p>
+                    </div>
+                </div>
+
             </div>
+
+            <!-- Navegação -->
             <div class="carrossel-buttons">
                 <span class="prev">&#10094;</span>
                 <span class="next">&#10095;</span>
             </div>
 
+            <!-- Indicadores -->
             <div class="indicators">
                 <span class="dot active"></span>
                 <span class="dot"></span>
@@ -88,79 +122,246 @@
             </div>
         </section>
 
-        <!-- Sobre Nós -->
-        <section id="sobre" class="section fade-in sobre-nos">
-            <div class="sobre-container">
-                <div class="sobre-text">
-                    <h2><i class="fas fa-church"></i> Sobre Nós</h2>
-                    <p>Somos o <strong>Ministério Apostólico Um Novo Tempo</strong>, dedicado a levar a mensagem de fé,
-                        esperança e amor. Nosso propósito é acolher e transformar vidas através da Palavra de Deus,
-                        construindo uma comunidade unida e solidária.</p>
-                </div>
-                <div class="sobre-imagem"></div>
-            </div>
-        </section>
+        <!-- ===== Pastores Presidentes ===== -->
+        <section id="pastores" class="pastores-hiper">
+            <div class="pastores-container-hiper">
+                <h2><i class="fas fa-church"></i> Pastores Presidentes</h2>
+                <p class="intro-pastores">
+                    Conheça os líderes que guiam o Ministério Apostólico Um Novo Tempo com fé, amor e dedicação.
+                </p>
 
-        <!-- Nossas Unidades -->
-        <section id="unidades" class="section fade-in unidades-section">
-            <h2><i class="fas fa-map-marker-alt"></i> Nossas Unidades</h2>
-            <div class="cards">
-                <div class="card">
-                    <i class="fas fa-home card-icon"></i>
-                    <h3>Almeida Prado</h3>
-                    <p>Rua Agenor Klaussner, 250 - São Paulo/SP</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-home card-icon"></i>
-                    <h3>Vila Natal</h3>
-                    <p>Rua Ingá Natal, 182 - São Paulo/SP</p>
+                <div class="pastores-cards-hiper">
+                    <!-- Apóstolo Márcio Alcântara -->
+                    <div class="pastor-card">
+                        <img src="img/apostolo-marcio.jpg" alt="Apóstolo Márcio Alcântara" class="pastor-img">
+                        <h3>Apóstolo Márcio Alcântara</h3>
+                        <p>Fundador e líder espiritual do ministério, dedicado a guiar a comunidade com amor, fé e sabedoria, ministrando a Palavra de Deus e fortalecendo a vida dos membros.</p>
+                    </div>
+
+                    <!-- Bispa Marli Alcântara -->
+                    <div class="pastor-card">
+                        <img src="img/bispa-marli.jpg" alt="Bispa Marli Alcântara" class="pastor-img">
+                        <h3>Bispa Marli Alcântara</h3>
+                        <p>Co-líder e esposa do Apóstolo Márcio, com dedicação ao cuidado espiritual e social da comunidade, apoiando projetos e ações que transformam vidas.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Nossos Cultos -->
-        <section id="cultos" class="section fade-in cultos-section">
-            <h2><i class="fas fa-calendar-alt"></i> Nossos Cultos</h2>
-            <p class="cultos-desc">Participe dos momentos de fé e adoração. Cada culto é uma oportunidade para
-                fortalecer sua vida espiritual.</p>
-        </section>
+        <!-- ===== Sobre Nós ===== -->
+        <section id="sobre" class="sobre-nos-hiper">
+            <div class="sobre-container-hiper">
+                <h2><i class="fas fa-church"></i> Sobre Nós</h2>
+                <p class="intro">
+                    No <strong>Ministério Apostólico Um Novo Tempo</strong>, a fé se transforma em ação, a esperança se torna realidade, e o amor de Deus guia cada passo da nossa comunidade.
+                </p>
 
-        <!-- Contato -->
-        <section id="contato" class="section fade-in contato-section">
-            <h2><i class="fas fa-envelope"></i> Contato</h2>
-            <div class="contact-cards">
-                <div class="contact-card">
-                    <i class="fas fa-envelope contact-icon"></i>
-                    <h3>Email</h3>
-                    <p>ministerioap.novotempo@gmail.com</p>
+                <div class="sobre-blocos-hiper">
+
+                    <!-- Missão -->
+                    <div class="bloco-hiper">
+                        <i class="fas fa-bullseye bloco-icon-hiper"></i>
+                        <h3>Missão</h3>
+                        <p class="texto-curto">Proclamar o Evangelho e promover transformação espiritual, emocional e social.</p>
+                        <p class="texto-completo">
+                            O Ministério Apostólico Um Novo Tempo Semeando Vidas busca alcançar isso através do ensino da Palavra de Deus, da oração fervorosa e do serviço compassivo, para que vidas sejam restauradas e renovadas pelo poder do amor de Deus.
+                        </p>
+                        <button class="btn-leia-mais">Leia Mais</button>
+                    </div>
+
+                    <!-- Visão -->
+                    <div class="bloco-hiper">
+                        <i class="fas fa-eye bloco-icon-hiper"></i>
+                        <h3>Visão</h3>
+                        <p class="texto-curto">Ser uma igreja vibrante e acolhedora, impactando positivamente a cidade.</p>
+                        <p class="texto-completo">
+                            Nossa visão é ser uma comunidade unida, comprometida em viver os valores do Reino de Deus, à medida que cada indivíduo é equipado para cumprir seu propósito divino.
+                        </p>
+                        <button class="btn-leia-mais">Leia Mais</button>
+                    </div>
+
+                    <!-- Valores -->
+                    <div class="bloco-hiper">
+                        <i class="fas fa-heart bloco-icon-hiper"></i>
+                        <h3>Valores</h3>
+                        <p class="texto-curto">Cristocentrismo, Palavra de Deus, Relacionamentos Autênticos, Oração, Serviço Compassivo.</p>
+                        <p class="texto-completo">
+                            Abraçamos a responsabilidade de alcançar pessoas com o Evangelho local e globalmente, cultivando relacionamentos genuínos e promovendo ações transformadoras.
+                        </p>
+                        <button class="btn-leia-mais">Leia Mais</button>
+                    </div>
+
                 </div>
             </div>
         </section>
 
+        <!-- ===== Nossas Unidades ===== -->
+        <section id="unidades" class="unidades-hiper">
+            <div class="unidades-container-hiper">
+                <h2><i class="fas fa-map-marker-alt"></i> Nossas Unidades</h2>
+                <p class="intro-unidades">Conheça nossas filiais e participe da nossa comunidade em cada localidade.</p>
+
+                <div class="unidades-cards-hiper">
+                    <div class="unidade-card" data-url="https://ruansantos2003.github.io/site-igreja2/">
+                        <i class="fas fa-church"></i>
+                        <h3>Vila Natal</h3>
+                    </div>
+
+                    <div class="unidade-card" data-url="https://ruansantos2003.github.io/site-igreja3/">
+                        <i class="fas fa-church"></i>
+                        <h3>Almeida Prado</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Nossos Cultos ===== -->
+        <section id="cultos" class="cultos-hiper">
+            <div class="cultos-container-hiper">
+                <h2><i class="fas fa-calendar-alt"></i> Nossos Cultos</h2>
+                <p class="intro-cultos">Participe dos nossos cultos e experimente momentos de conexão com Deus.</p>
+
+                <div class="cultos-cards-hiper">
+                    <div class="culto-card">
+                        <i class="fas fa-sun"></i>
+                        <h3>Quarta-Feira</h3>
+                        <p>20h00 - Busca do Espírito Santo</p>
+                    </div>
+                    <div class="culto-card">
+                        <i class="fas fa-book"></i>
+                        <h3>Sexta-Feira</h3>
+                        <p>20h00 - Culto de Libertação</p>
+                    </div>
+                    <div class="culto-card">
+                        <i class="fas fa-moon"></i>
+                        <h3>Domingo</h3>
+                        <p>19h30 - Culto da Familia</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ofertas" class="ofertas-hiper">
+            <div class="ofertas-container-hiper">
+                <h2><i class="fas fa-hand-holding-heart"></i> Ofertas do Ministério</h2>
+                <p class="intro-ofertas">Contribua para o ministério e ajude a transformar vidas através do PIX. Doe de forma rápida, segura e prática.</p>
+
+                <div class="ofertas-cards-hiper">
+                    <!-- Oferta 1 -->
+                    <div class="oferta-card">
+                        <i class="fas fa-coins"></i>
+                        <h3>Contribuição Geral</h3>
+                        <p>Ajude o ministério a realizar ações sociais e cultos de impacto.</p>
+                        <a href="pix://4819360802" class="btn-pix" target="_blank">Doar via PIX</a>
+                    </div>
+
+                    <!-- Oferta 2 -->
+                    <div class="oferta-card">
+                        <i class="fas fa-pray"></i>
+                        <h3>Oferta de Adoração</h3>
+                        <p>Participe das ofertas de adoração e fortaleça a obra de Deus.</p>
+                        <a href="pix://CHAVE_DO_PIX2" class="btn-pix" target="_blank">Doar via PIX</a>
+                    </div>
+
+                    <!-- Oferta 3 -->
+                    <div class="oferta-card">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h3>Projeto Social</h3>
+                        <p>Contribua para projetos sociais e transformação da comunidade.</p>
+                        <a href="pix://CHAVE_DO_PIX3" class="btn-pix" target="_blank">Doar via PIX</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Contato ===== -->
+        <section id="contato" class="contato-hiper">
+            <div class="contato-container-hiper">
+                <h2><i class="fas fa-envelope"></i> Contato</h2>
+                <p class="intro-contato">Entre em contato conosco para mais informações, dúvidas ou solicitações.</p>
+
+                <div class="contato-form-hiper">
+                    <h3>Envie sua mensagem</h3>
+                    <input type="text" placeholder="Nome" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Mensagem" rows="5" required></textarea>
+                    <button>Enviar</button>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <!-- Rodapé -->
     <footer>
-        <p>&copy; 2025 Ministério Apostólico Um Novo Tempo - Todos os direitos reservados</p>
+        <p>© 2025 Ministério Apostólico Um Novo Tempo. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Botão WhatsApp -->
-    <a href="https://wa.me/5511999999999" target="_blank" id="whatsapp-button">
+    <!-- WhatsApp -->
+    <a href="https://wa.me/5511911127755" id="whatsapp-button" target="_blank" title="Fale conosco via WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Script para substituir todo o site pelo site da filial -->
+    <!-- JS -->
     <script>
-        const linksFiliais = document.querySelectorAll('.filial-link');
+        // Botão menu mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
 
-        linksFiliais.forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                // Substitui todo o body pelo iframe do site da filial
-                document.body.innerHTML = `<iframe src="${link.href}" style="width:100%; height:100vh; border:none;"></iframe>`;
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Botões "Leia Mais"
+        const botoesLeiaMais = document.querySelectorAll('.btn-leia-mais');
+        botoesLeiaMais.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const bloco = btn.parentElement;
+                bloco.classList.toggle('expanded');
+                btn.textContent = bloco.classList.contains('expanded') ? 'Leia Menos' : 'Leia Mais';
             });
         });
-    </script>
 
+        // Unidades clicáveis
+        const unidadeCards = document.querySelectorAll('.unidade-card');
+        unidadeCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const url = card.getAttribute('data-url');
+                if (url) window.open(url, '_blank');
+            });
+        });
+
+        // Carrossel simples
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            slides[n].classList.add('active');
+            dots[n].classList.add('active');
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        document.querySelector('.next').addEventListener('click', nextSlide);
+        document.querySelector('.prev').addEventListener('click', prevSlide);
+        dots.forEach((dot, i) => dot.addEventListener('click', () => {
+            slideIndex = i;
+            showSlide(slideIndex);
+        }));
+
+        // Auto slide
+        setInterval(nextSlide, 7000);
+    </script>
 </body>
 
 </html>
