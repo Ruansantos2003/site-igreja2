@@ -764,61 +764,145 @@ header {
 /* cultos final*/
 
 
-/* ===== Ofertas Modernas ===== */
+/* ===== Seção Dízimos e Ofertas Tecnológica ===== */
 
-.ofertas-hiper {
-    background: #ffffff;
+.ofertas-modernas {
+    font-family: 'Montserrat', sans-serif;
     padding: 80px 20px;
-    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: #f5f9ff;
+    /* fundo claro */
+    color: #0b3d91;
 }
 
-.ofertas-container-hiper h2 {
-    font-size: 2.8rem;
-    color: #0066cc;
-    margin-bottom: 10px;
+
+/* Fundo animado - linhas diagonais sutis */
+
+.ofertas-modernas::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient( 45deg, rgba(11, 61, 145, 0.05) 0, rgba(11, 61, 145, 0.05) 1px, transparent 1px, transparent 20px);
+    z-index: 0;
+    animation: diagonalMove 30s linear infinite;
 }
 
-.intro-ofertas {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 50px;
+@keyframes diagonalMove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(50px, 50px);
+    }
 }
 
-.ofertas-cards-hiper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
+
+/* Container centralizado */
+
+.ofertas-container {
+    position: relative;
+    z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.oferta-card {
-    background: #f9faff;
-    border-radius: 25px;
-    padding: 35px 25px;
-    width: 280px;
+
+/* Header da seção */
+
+.ofertas-header {
     text-align: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 60px;
 }
 
-.oferta-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+.ofertas-header h2 {
+    font-size: 2.8rem;
+    color: #0b3d91;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-.oferta-card i {
+.ofertas-header p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
+/* Grid de cards */
+
+.ofertas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+
+/* Cards modernos e tecnológicos */
+
+.oferta-card.moderno {
+    background: #ffffff;
+    /* card branco */
+    border-radius: 20px;
+    padding: 35px 25px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(11, 61, 145, 0.2);
+    text-align: center;
+    color: #0b3d91;
+    box-shadow: 0 12px 30px rgba(11, 61, 145, 0.1);
+    transition: all 0.3s ease;
+}
+
+
+/* Brilho suave nos cards */
+
+.oferta-card.moderno::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    transform: rotate(45deg);
+    pointer-events: none;
+}
+
+
+/* Conteúdo do card */
+
+.oferta-card .card-content {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Ícones dos cards */
+
+.card-icon {
     font-size: 3rem;
-    color: #0066cc;
+    color: #0b3d91;
     margin-bottom: 15px;
 }
 
+
+/* Títulos dos cards */
+
 .oferta-card h3 {
     font-size: 1.5rem;
-    color: #004a99;
-    margin-bottom: 10px;
+    color: #0b3d91;
+    margin-bottom: 12px;
+    font-weight: 700;
 }
+
+
+/* Texto dos cards */
 
 .oferta-card p {
     font-size: 1rem;
@@ -827,31 +911,57 @@ header {
 }
 
 
-/* Botão Pix */
+/* Chave PIX */
 
-.btn-pix {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 25px;
-    border-radius: 25px;
-    background: #25d366;
-    color: white;
+.pix-key {
+    font-weight: 700;
+    color: #0b3d91;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+
+/* Botão copiar PIX */
+
+.btn-copy-pix {
+    background: linear-gradient(135deg, #0b3d91, #2575fc);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
     font-weight: 600;
-    text-decoration: none;
-    transition: background 0.3s ease;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.btn-pix:hover {
-    background: #128c4a;
+.btn-copy-pix:hover {
+    background: linear-gradient(135deg, #2575fc, #0b3d91);
+    transform: scale(1.05);
 }
 
 
-/* Responsividade Ofertas */
+/* Remover animações exageradas dos cards */
+
+.oferta-card.moderno:hover {
+    transform: none;
+    box-shadow: 0 12px 30px rgba(11, 61, 145, 0.15);
+}
+
+
+/* Responsividade */
 
 @media (max-width: 768px) {
-    .ofertas-cards-hiper {
-        flex-direction: column;
-        gap: 25px;
+    .ofertas-header h2 {
+        font-size: 2rem;
+    }
+    .ofertas-header p {
+        font-size: 1rem;
+    }
+    .ofertas-grid {
+        grid-template-columns: 1fr;
+    }
+    .btn-copy-pix {
+        width: 100%;
     }
 }
 
@@ -983,6 +1093,75 @@ header {
 /* final contato*/
 
 
+/*inicio endereço*/
+
+.endereco-hiper {
+    padding: 60px 20px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.endereco-container-hiper h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: #111;
+}
+
+.intro-endereco {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.endereco-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    gap: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.endereco-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.endereco-icon {
+    font-size: 60px;
+    color: #6a11cb;
+}
+
+.endereco-info h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #111;
+}
+
+.endereco-info p {
+    font-size: 16px;
+    color: #555;
+    margin: 4px 0;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+    .endereco-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
+/*final endereço
+
 /* Animação de ícones flutuantes */
 
 @keyframes floatIcon {
@@ -1020,33 +1199,26 @@ footer {
 
 #whatsapp-button {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25D366;
+    bottom: 30px;
+    right: 30px;
+    background: #25d366;
     color: #fff;
-    font-size: 30px;
-    padding: 15px;
+    font-size: 24px;
+    width: 60px;
+    /* largura igual à altura */
+    height: 60px;
+    /* altura igual à largura */
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* totalmente redondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s;
-    z-index: 1000;
-    animation: pulse 2s infinite;
 }
 
 #whatsapp-button:hover {
-    transform: scale(1.2);
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
+    transform: scale(1.1);
 }
 
 
@@ -1247,4 +1419,163 @@ footer {
 .btn-leia-mais:hover {
     background-color: #6a11cb;
     color: #fff;
+}
+
+
+/* filial vila natal*/
+
+
+/* =================== RESPONSIVIDADE ULTRA =================== */
+
+
+/* Mobile fino e muito pequenos (até 480px) */
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+    }
+    .header-text h1 {
+        font-size: 14px;
+    }
+    .header-text h2 {
+        font-size: 12px;
+    }
+    .nav-links li a {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+    .slide-content h2 {
+        font-size: 1.5rem;
+    }
+    .slide-content h3 {
+        font-size: 1.2rem;
+    }
+    .slide-content p {
+        font-size: 0.9rem;
+    }
+    .unidade-card,
+    .pastor-card,
+    .culto-card,
+    .bloco-hiper,
+    .contato-card,
+    .oferta-card.moderno {
+        width: 100%;
+        padding: 25px 15px;
+    }
+    .sobre-blocos-hiper,
+    .unidades-cards-hiper,
+    .pastores-cards-hiper,
+    .cultos-cards-hiper,
+    .contato-cards-hiper,
+    .ofertas-grid {
+        gap: 15px;
+    }
+    .btn-leia-mais,
+    .btn-copy-pix,
+    .bloco-hiper button {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+    .contato-form-hiper {
+        padding: 25px 20px;
+    }
+    .menu-toggle {
+        font-size: 28px;
+    }
+    .carrossel-buttons .prev,
+    .carrossel-buttons .next {
+        font-size: 2rem;
+        padding: 8px;
+    }
+    .indicators .dot {
+        height: 12px;
+        width: 12px;
+        margin: 0 3px;
+    }
+    .btn-voltar {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+    #whatsapp-button {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        bottom: 20px;
+        right: 15px;
+    }
+}
+
+
+/* Tablets (481px até 768px) ajustes finos */
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .slide-content h2 {
+        font-size: 1.8rem;
+    }
+    .slide-content h3 {
+        font-size: 1.4rem;
+    }
+    .slide-content p {
+        font-size: 1rem;
+    }
+    .unidade-card,
+    .pastor-card,
+    .culto-card,
+    .bloco-hiper,
+    .contato-card,
+    .oferta-card.moderno {
+        width: 90%;
+        padding: 30px 20px;
+    }
+    .sobre-blocos-hiper,
+    .unidades-cards-hiper,
+    .pastores-cards-hiper,
+    .cultos-cards-hiper,
+    .contato-cards-hiper,
+    .ofertas-grid {
+        gap: 20px;
+    }
+    .btn-leia-mais,
+    .btn-copy-pix,
+    .bloco-hiper button {
+        font-size: 1rem;
+        padding: 12px 18px;
+    }
+    .contato-form-hiper {
+        max-width: 90%;
+        padding: 30px 20px;
+    }
+}
+
+
+/* Laptops pequenos (769px até 1024px) */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .slide-content h2 {
+        font-size: 2.2rem;
+    }
+    .slide-content h3 {
+        font-size: 1.6rem;
+    }
+    .slide-content p {
+        font-size: 1.1rem;
+    }
+    .unidade-card,
+    .pastor-card,
+    .culto-card,
+    .bloco-hiper,
+    .contato-card,
+    .oferta-card.moderno {
+        width: 48%;
+        padding: 30px;
+    }
+    .sobre-blocos-hiper,
+    .unidades-cards-hiper,
+    .pastores-cards-hiper,
+    .cultos-cards-hiper,
+    .contato-cards-hiper,
+    .ofertas-grid {
+        gap: 25px;
+    }
 }

@@ -22,9 +22,69 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- CSS -->
+    <!-- CSS externo -->
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="img/img5-removebg-preview.png" type="image/png">
+
+    <!-- Estilos do overlay (iframe fullscreen) -->
+    <style>
+        /* overlay que mostra o site da filial em fullscreen */
+        
+        .filial-overlay {
+            position: fixed;
+            inset: 0;
+            display: none;
+            flex-direction: column;
+            background: #ffffff;
+            z-index: 9999;
+        }
+        
+        .filial-overlay.open {
+            display: flex;
+        }
+        
+        .filial-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 10000;
+        }
+        
+        .filial-bar .filial-title {
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        #filial-back {
+            background: #111;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        #filial-back:active {
+            transform: translateY(1px);
+        }
+        
+        #filial-iframe {
+            flex: 1;
+            width: 100%;
+            height: calc(100vh - 56px);
+            border: none;
+        }
+        /* pequeno ajuste para evitar salto atrás quando ocultar overflow */
+        
+        html.filial-open {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body id="topo-pagina">
@@ -46,11 +106,15 @@
                     <li><a href="#cultos">Cultos</a></li>
                     <li><a href="#sobre">Sobre Nós</a></li>
                     <li><a href="#ofertas">Ofertas</a></li>
-                    <!-- Dropdown Filiais -->
+
+                    <!-- Dropdown Filiais (sem target, vamos controlar pelo JS) -->
                     <li class="dropdown">
                         <a href="javascript:void(0)">Filiais <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="https://ruansantos2003.github.io/site-igreja2/" class="filial-link">Vila Natal</a></li>
+                            <li>
+                                <a class="filial-link" href="https://ruansantos2003.github.io/projeto-igreja/">Vila Natal</a>
+                            </li>
+
                         </ul>
                     </li>
                     <li><a href="#contato">Contato</a></li>
@@ -59,7 +123,7 @@
                 <!-- Redes Sociais -->
                 <div class="social-icons">
                     <a href="https://instagram.com/ministerioapostolicoumnovotemp" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://facebook.com/se" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                 </div>
 
                 <!-- Botão menu mobile -->
@@ -91,7 +155,7 @@
                 <div class="slide" style="background-image: url('img/imagem3.jpg');">
                     <div class="overlay"></div>
                     <div class="slide-content">
-                        <h2>Comunidade Unida</h2>
+                        <h2>Igreja Unida</h2>
                         <h3>Construindo Laços de Solidariedade</h3>
                         <p>Nosso ministério é uma família que promove eventos e ações sociais impactantes.</p>
                     </div>
@@ -100,9 +164,9 @@
                 <div class="slide" style="background-image: url('img/bispaft.jpg');">
                     <div class="overlay"></div>
                     <div class="slide-content">
-                        <h2>Comunidade Unida</h2>
-                        <h3>Construindo Laços de Solidariedade</h3>
-                        <p>Nosso ministério é uma família que promove eventos e ações sociais impactantes.</p>
+                        <h2>Juntos Até Sião!</h2>
+                        <h3>Fortalecendo Nossa Jornada</h3>
+                        <p>Caminhamos unidos na fé, realizando ações que transformam vidas e edificam nossa comunidade com amor e esperança.</p>
                     </div>
                 </div>
 
@@ -125,7 +189,8 @@
         <!-- ===== Pastores Presidentes ===== -->
         <section id="pastores" class="pastores-hiper">
             <div class="pastores-container-hiper">
-                <h2><i class="fas fa-church"></i> Pastores Presidentes</h2>
+                <h2>
+                    </i> Pastores Presidentes</h2>
                 <p class="intro-pastores">
                     Conheça os líderes que guiam o Ministério Apostólico Um Novo Tempo com fé, amor e dedicação.
                 </p>
@@ -140,7 +205,7 @@
 
                     <!-- Bispa Marli Alcântara -->
                     <div class="pastor-card">
-                        <img src="img/bispa-marli.jpg" alt="Bispa Marli Alcântara" class="pastor-img">
+                        <img src="img/bispaft.jpg" alt="Bispa Marli Alcântara" class="pastor-img">
                         <h3>Bispa Marli Alcântara</h3>
                         <p>Co-líder e esposa do Apóstolo Márcio, com dedicação ao cuidado espiritual e social da comunidade, apoiando projetos e ações que transformam vidas.</p>
                     </div>
@@ -151,7 +216,8 @@
         <!-- ===== Sobre Nós ===== -->
         <section id="sobre" class="sobre-nos-hiper">
             <div class="sobre-container-hiper">
-                <h2><i class="fas fa-church"></i> Sobre Nós</h2>
+                <h2>
+                    </i> Sobre Nós</h2>
                 <p class="intro">
                     No <strong>Ministério Apostólico Um Novo Tempo</strong>, a fé se transforma em ação, a esperança se torna realidade, e o amor de Deus guia cada passo da nossa comunidade.
                 </p>
@@ -202,17 +268,12 @@
                 <p class="intro-unidades">Conheça nossas filiais e participe da nossa comunidade em cada localidade.</p>
 
                 <div class="unidades-cards-hiper">
-                    <div class="unidade-card" data-url="https://ruansantos2003.github.io/site-igreja2/">
-                        <i class="fas fa-church"></i>
-                        <h3>Vila Natal</h3>
+                    <div class="unidade-card">
+                        <a class="filial-link" href="https://ruansantos2003.github.io/projeto-igreja/">
+                            <i class="fas fa-church"></i>
+                            <h3>Vila Natal</h3>
+                        </a>
                     </div>
-
-                    <div class="unidade-card" data-url="https://ruansantos2003.github.io/site-igreja3/">
-                        <i class="fas fa-church"></i>
-                        <h3>Almeida Prado</h3>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <!-- ===== Nossos Cultos ===== -->
@@ -223,56 +284,54 @@
 
                 <div class="cultos-cards-hiper">
                     <div class="culto-card">
-                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-dove"></i>
                         <h3>Quarta-Feira</h3>
                         <p>20h00 - Busca do Espírito Santo</p>
                     </div>
                     <div class="culto-card">
-                        <i class="fas fa-book"></i>
+                        <i class="fas fa-fire"></i>
                         <h3>Sexta-Feira</h3>
                         <p>20h00 - Culto de Libertação</p>
                     </div>
                     <div class="culto-card">
-                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-house-user"></i>
                         <h3>Domingo</h3>
-                        <p>19h30 - Culto da Familia</p>
+                        <p>18h00 - Culto da Familia</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="ofertas" class="ofertas-hiper">
-            <div class="ofertas-container-hiper">
-                <h2><i class="fas fa-hand-holding-heart"></i> Ofertas do Ministério</h2>
-                <p class="intro-ofertas">Contribua para o ministério e ajude a transformar vidas através do PIX. Doe de forma rápida, segura e prática.</p>
+        <section id="ofertas" class="ofertas-modernas">
+            <div class="ofertas-container">
+                <!-- Header da Seção -->
+                <div class="ofertas-header">
+                    <h2>Dízimos e Ofertas</h2>
+                    <p>Contribua com a obra de Deus de forma segura e prática. Escolha sua forma de doação.</p>
+                </div>
 
-                <div class="ofertas-cards-hiper">
-                    <!-- Oferta 1 -->
-                    <div class="oferta-card">
-                        <i class="fas fa-coins"></i>
-                        <h3>Contribuição Geral</h3>
-                        <p>Ajude o ministério a realizar ações sociais e cultos de impacto.</p>
-                        <a href="pix://4819360802" class="btn-pix" target="_blank">Doar via PIX</a>
+                <!-- Grid de Cards -->
+                <div class="ofertas-grid">
+
+                    <!-- Card Banco -->
+                    <div class="oferta-card moderno">
+                        <div class="card-icon"><i class="fas fa-university"></i></div>
+                        <h3>Banco Caixa Econômica</h3>
+                        <p>Conta Corrente: 1234-5 <br> Agência: 6789 <br> Titular: Igreja Exemplo</p>
                     </div>
 
-                    <!-- Oferta 2 -->
-                    <div class="oferta-card">
-                        <i class="fas fa-pray"></i>
-                        <h3>Oferta de Adoração</h3>
-                        <p>Participe das ofertas de adoração e fortaleça a obra de Deus.</p>
-                        <a href="pix://CHAVE_DO_PIX2" class="btn-pix" target="_blank">Doar via PIX</a>
+                    <!-- Card PIX -->
+                    <div class="oferta-card moderno">
+                        <div class="card-icon"><i class="fas fa-qrcode"></i></div>
+                        <h3>Chave PIX</h3>
+                        <p class="pix-key">contato@igreja.com.br</p>
+                        <button class="btn-copy-pix" onclick="copyPix()">Copiar PIX</button>
                     </div>
 
-                    <!-- Oferta 3 -->
-                    <div class="oferta-card">
-                        <i class="fas fa-hand-holding-usd"></i>
-                        <h3>Projeto Social</h3>
-                        <p>Contribua para projetos sociais e transformação da comunidade.</p>
-                        <a href="pix://CHAVE_DO_PIX3" class="btn-pix" target="_blank">Doar via PIX</a>
-                    </div>
                 </div>
             </div>
         </section>
+
 
         <!-- ===== Contato ===== -->
         <section id="contato" class="contato-hiper">
@@ -280,21 +339,52 @@
                 <h2><i class="fas fa-envelope"></i> Contato</h2>
                 <p class="intro-contato">Entre em contato conosco para mais informações, dúvidas ou solicitações.</p>
 
-                <div class="contato-form-hiper">
-                    <h3>Envie sua mensagem</h3>
-                    <input type="text" placeholder="Nome" required>
-                    <input type="email" placeholder="Email" required>
-                    <textarea placeholder="Mensagem" rows="5" required></textarea>
-                    <button>Enviar</button>
+                <form class="contato-form-hiper" id="formContato">
+                    <h3>Pedido de Oração</h3>
+
+                    <input type="text" id="nome" placeholder="Nome" required maxlength="20">
+                    <input type="text" id="telefone" placeholder="Telefone / WhatsApp" required maxlength="15">
+                    <textarea id="mensagem" placeholder="Mensagem" rows="5" required maxlength="500"></textarea>
+
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ===== Endereço ===== -->
+        <section id="endereco" class="endereco-hiper">
+            <div class="endereco-card">
+                <i class="fas fa-church endereco-icon"></i>
+                <div class="endereco-info">
+                    <h3>Ministério Apostólico Um Novo Tempo Semeando Vidas</h3>
+                    <p>Rua Agenor Klausnner, 250 - Jd Sete de Setembro, São Paulo - SP, 01111-111</p>
+                    <p>Telefone: (11) 91111-22755</p>
+                    <p>Email: contato@igreja.com.br</p>
+                </div>
+                <div class="endereco-mapa">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.123456789!2d-46.633308!3d-23.550520!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c123456789%3A0xabcdef1234567890!2sMinist%C3%A9rio%20Apost%C3%B3lico%20Um%20Novo%20Tempo!5e0!3m2!1spt-BR!2sbr!4v1694771234567!5m2!1spt-BR!2sbr"
+                        width="100%" height="250" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
                 </div>
             </div>
         </section>
+
     </main>
+
+    <!-- Overlay que mostra o site da filial -->
+    <div id="filial-overlay" class="filial-overlay" aria-hidden="true">
+        <div class="filial-bar">
+            <button id="filial-back" aria-label="Voltar">← Voltar</button>
+            <span class="filial-title">Abrindo filial...</span>
+        </div>
+        <iframe id="filial-iframe" src="about:blank" title="Site da filial"></iframe>
+    </div>
 
     <!-- Rodapé -->
     <footer>
-        <p>© 2025 Ministério Apostólico Um Novo Tempo. Todos os direitos reservados.</p>
+        <p>© Ministério Apostólico Um Novo Tempo - 2025 - Todos os direitos reservados. <strong>CodeByRuan</strong></p>
     </footer>
+
 
     <!-- WhatsApp -->
     <a href="https://wa.me/5511911127755" id="whatsapp-button" target="_blank" title="Fale conosco via WhatsApp">
@@ -303,13 +393,104 @@
 
     <!-- JS -->
     <script>
+        // -------------------------
+        // Comportamento do overlay (abrir filial dentro do site)
+        // -------------------------
+        (function() {
+            const filialLinks = document.querySelectorAll('.filial-link');
+            const overlay = document.getElementById('filial-overlay');
+            const iframe = document.getElementById('filial-iframe');
+            const backBtn = document.getElementById('filial-back');
+            const filialTitle = overlay.querySelector('.filial-title');
+
+            let iframeLoaded = false;
+            let openTimeout = null;
+
+            function openFilial(url, label) {
+                // mostra overlay e tenta carregar no iframe
+                iframeLoaded = false;
+                filialTitle.textContent = label || 'Filial';
+                overlay.classList.add('open');
+                overlay.setAttribute('aria-hidden', 'false');
+                iframe.src = url;
+                document.documentElement.classList.add('filial-open');
+
+                // push state para permitir que botão "voltar" do navegador feche o overlay
+                if (!history.state || !history.state.overlay) {
+                    history.pushState({
+                        overlay: true
+                    }, '', '');
+                }
+
+                // Se o iframe não carregar (provável bloqueio por X-Frame-Options), faz fallback e navega na mesma aba
+                openTimeout = setTimeout(() => {
+                    if (!iframeLoaded) {
+                        // fallback -> navega na mesma aba (mantém histórico para voltar)
+                        overlay.classList.remove('open');
+                        overlay.setAttribute('aria-hidden', 'true');
+                        iframe.src = 'about:blank';
+                        document.documentElement.classList.remove('filial-open');
+                        // redireciona na mesma aba
+                        location.href = url;
+                    }
+                }, 1800); // 1.8s — tempo curto para detectar bloqueio/erro
+            }
+
+            function closeOverlay() {
+                clearTimeout(openTimeout);
+                overlay.classList.remove('open');
+                overlay.setAttribute('aria-hidden', 'true');
+                iframe.src = 'about:blank';
+                document.documentElement.classList.remove('filial-open');
+
+                // se o estado de histórico indica que abrimos o overlay, volta uma posição para remover o state
+                if (history.state && history.state.overlay) {
+                    history.back();
+                }
+            }
+
+            filialLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const url = link.href;
+                    const label = link.textContent.trim() || 'Filial';
+                    openFilial(url, label);
+                });
+            });
+
+            iframe.addEventListener('load', () => {
+                iframeLoaded = true;
+                clearTimeout(openTimeout);
+            });
+
+            backBtn.addEventListener('click', () => {
+                closeOverlay();
+            });
+
+            // Se o usuário clicar no botão voltar do navegador, fecha o overlay quando estiver aberto
+            window.addEventListener('popstate', (e) => {
+                // se overlay aberto, fecha ele (pois popstate veio do pushState que realizou ao abrir)
+                if (overlay.classList.contains('open')) {
+                    overlay.classList.remove('open');
+                    overlay.setAttribute('aria-hidden', 'true');
+                    iframe.src = 'about:blank';
+                    document.documentElement.classList.remove('filial-open');
+                }
+            });
+        })();
+
+        // -------------------------
+        // Resto do seu JS (menu mobile, carousel, etc.)
+        // -------------------------
         // Botão menu mobile
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
 
         // Botões "Leia Mais"
         const botoesLeiaMais = document.querySelectorAll('.btn-leia-mais');
@@ -321,25 +502,17 @@
             });
         });
 
-        // Unidades clicáveis
-        const unidadeCards = document.querySelectorAll('.unidade-card');
-        unidadeCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const url = card.getAttribute('data-url');
-                if (url) window.open(url, '_blank');
-            });
-        });
-
         // Carrossel simples
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.dot');
 
         function showSlide(n) {
+            if (!slides.length) return;
             slides.forEach(s => s.classList.remove('active'));
             dots.forEach(d => d.classList.remove('active'));
             slides[n].classList.add('active');
-            dots[n].classList.add('active');
+            if (dots[n]) dots[n].classList.add('active');
         }
 
         function nextSlide() {
@@ -352,16 +525,74 @@
             showSlide(slideIndex);
         }
 
-        document.querySelector('.next').addEventListener('click', nextSlide);
-        document.querySelector('.prev').addEventListener('click', prevSlide);
+        const nextBtn = document.querySelector('.next');
+        const prevBtn = document.querySelector('.prev');
+
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
         dots.forEach((dot, i) => dot.addEventListener('click', () => {
             slideIndex = i;
             showSlide(slideIndex);
         }));
 
         // Auto slide
-        setInterval(nextSlide, 7000);
+        if (slides.length) setInterval(nextSlide, 7000);
+
+        // ofertas
+        document.querySelectorAll('.btn-copy-pix').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const pixKey = btn.closest('.oferta-card').querySelector('.pix-key').textContent;
+                navigator.clipboard.writeText(pixKey).then(() => {
+                    btn.textContent = 'PIX Copiado!';
+                    setTimeout(() => btn.textContent = 'Copiar PIX', 2000);
+                });
+            });
+        });
+
+        // validaçao do campo contato
+        const form = document.getElementById('formContato');
+        const nome = document.getElementById('nome');
+        const telefone = document.getElementById('telefone');
+
+        // Bloquear números e caracteres especiais no campo nome
+        nome.addEventListener('input', function() {
+            this.value = this.value.replace(/[^a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]/g, '');
+        });
+
+        // Bloquear letras no campo telefone
+        telefone.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        // Validação de campos obrigatórios
+        form.addEventListener('submit', function(e) {
+            if (!nome.value.trim() || !telefone.value.trim() || !form.mensagem.value.trim()) {
+                alert('Todos os campos são obrigatórios!');
+                e.preventDefault();
+            }
+        });
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        // Abre/fecha menu mobile
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Evitar que o dropdown feche ao clicar em filiais
+        const dropdownItems = document.querySelectorAll('.dropdown-menu li a');
+
+        dropdownItems.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.stopPropagation(); // impede o fechamento
+                // opcional: navega para a seção sem fechar o menu
+                // window.location.href = link.getAttribute('href');
+            });
+        });
     </script>
 </body>
+
+</html>
 
 </html>
