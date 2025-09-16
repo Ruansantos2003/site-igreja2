@@ -393,10 +393,117 @@
 
     <!-- JS -->
     <script>
-        // -------------------------
-        // Comportamento do overlay (abrir filial dentro do site)
-        // -------------------------
-        (function() {
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // -------------------------
+            // Menu mobile
+            // -------------------------
+            // Menu mobile com animação e ícone X
+            const menuToggleBtn = document.querySelector('.menu-toggle');
+            const navMobile = document.querySelector('.nav-links');
+
+            menuToggleBtn.addEventListener('click', () => {
+                navMobile.classList.toggle('active');
+                menuToggleBtn.classList.toggle('open');
+            });
+
+            // Evitar fechamento do dropdown ao clicar em filiais
+            document.querySelectorAll('.dropdown-menu li a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            });
+
+            // -------------------------
+            // Botões "Leia Mais"
+            // -------------------------
+            document.querySelectorAll('.btn-leia-mais').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const bloco = btn.closest('.bloco-hiper');
+                    bloco.classList.toggle('expanded');
+                    btn.textContent = bloco.classList.contains('expanded') ? 'Leia Menos' : 'Leia Mais';
+                });
+            });
+
+            // -------------------------
+            // Carrossel simples
+            // -------------------------
+            let slideIndex = 0;
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+
+            function showSlide(n) {
+                if (!slides.length) return;
+                slides.forEach(s => s.classList.remove('active'));
+                dots.forEach(d => d.classList.remove('active'));
+                slides[n].classList.add('active');
+                if (dots[n]) dots[n].classList.add('active');
+            }
+
+            function nextSlide() {
+                slideIndex = (slideIndex + 1) % slides.length;
+                showSlide(slideIndex);
+            }
+
+            function prevSlide() {
+                slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+                showSlide(slideIndex);
+            }
+
+            const nextBtn = document.querySelector('.next');
+            const prevBtn = document.querySelector('.prev');
+
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            dots.forEach((dot, i) => dot.addEventListener('click', () => {
+                slideIndex = i;
+                showSlide(slideIndex);
+            }));
+
+            if (slides.length) setInterval(nextSlide, 7000);
+
+            // -------------------------
+            // Copiar PIX
+            // -------------------------
+            document.querySelectorAll('.btn-copy-pix').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const pixKey = btn.closest('.oferta-card').querySelector('.pix-key').textContent.trim();
+                    navigator.clipboard.writeText(pixKey).then(() => {
+                        btn.textContent = 'PIX Copiado!';
+                        setTimeout(() => btn.textContent = 'Copiar PIX', 2000);
+                    });
+                });
+            });
+
+            // -------------------------
+            // Validação formulário contato
+            // -------------------------
+            const form = document.getElementById('formContato');
+            const nome = document.getElementById('nome');
+            const telefone = document.getElementById('telefone');
+            const mensagem = document.getElementById('mensagem');
+
+            // Bloquear números e caracteres especiais no campo nome
+            nome.addEventListener('input', function() {
+                this.value = this.value.replace(/[^a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]/g, '');
+            });
+
+            // Bloquear letras no campo telefone
+            telefone.addEventListener('input', function() {
+                this.value = this.value.replace(/\D/g, '');
+            });
+
+            // Validação de campos obrigatórios
+            form.addEventListener('submit', function(e) {
+                if (!nome.value.trim() || !telefone.value.trim() || !mensagem.value.trim()) {
+                    alert('Todos os campos são obrigatórios!');
+                    e.preventDefault();
+                }
+            });
+
+            // -------------------------
+            // Overlay Filiais
+            // -------------------------
             const filialLinks = document.querySelectorAll('.filial-link');
             const overlay = document.getElementById('filial-overlay');
             const iframe = document.getElementById('filial-iframe');
@@ -407,7 +514,6 @@
             let openTimeout = null;
 
             function openFilial(url, label) {
-                // mostra overlay e tenta carregar no iframe
                 iframeLoaded = false;
                 filialTitle.textContent = label || 'Filial';
                 overlay.classList.add('open');
@@ -415,25 +521,21 @@
                 iframe.src = url;
                 document.documentElement.classList.add('filial-open');
 
-                // push state para permitir que botão "voltar" do navegador feche o overlay
                 if (!history.state || !history.state.overlay) {
                     history.pushState({
                         overlay: true
                     }, '', '');
                 }
 
-                // Se o iframe não carregar (provável bloqueio por X-Frame-Options), faz fallback e navega na mesma aba
                 openTimeout = setTimeout(() => {
                     if (!iframeLoaded) {
-                        // fallback -> navega na mesma aba (mantém histórico para voltar)
                         overlay.classList.remove('open');
                         overlay.setAttribute('aria-hidden', 'true');
                         iframe.src = 'about:blank';
                         document.documentElement.classList.remove('filial-open');
-                        // redireciona na mesma aba
                         location.href = url;
                     }
-                }, 1800); // 1.8s — tempo curto para detectar bloqueio/erro
+                }, 1800);
             }
 
             function closeOverlay() {
@@ -443,7 +545,6 @@
                 iframe.src = 'about:blank';
                 document.documentElement.classList.remove('filial-open');
 
-                // se o estado de histórico indica que abrimos o overlay, volta uma posição para remover o state
                 if (history.state && history.state.overlay) {
                     history.back();
                 }
@@ -452,9 +553,7 @@
             filialLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    const url = link.href;
-                    const label = link.textContent.trim() || 'Filial';
-                    openFilial(url, label);
+                    openFilial(link.href, link.textContent.trim());
                 });
             });
 
@@ -463,13 +562,9 @@
                 clearTimeout(openTimeout);
             });
 
-            backBtn.addEventListener('click', () => {
-                closeOverlay();
-            });
+            backBtn.addEventListener('click', closeOverlay);
 
-            // Se o usuário clicar no botão voltar do navegador, fecha o overlay quando estiver aberto
-            window.addEventListener('popstate', (e) => {
-                // se overlay aberto, fecha ele (pois popstate veio do pushState que realizou ao abrir)
+            window.addEventListener('popstate', () => {
                 if (overlay.classList.contains('open')) {
                     overlay.classList.remove('open');
                     overlay.setAttribute('aria-hidden', 'true');
@@ -477,118 +572,7 @@
                     document.documentElement.classList.remove('filial-open');
                 }
             });
-        })();
 
-        // -------------------------
-        // Resto do seu JS (menu mobile, carousel, etc.)
-        // -------------------------
-        // Botão menu mobile
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-        }
-
-        // Botões "Leia Mais"
-        const botoesLeiaMais = document.querySelectorAll('.btn-leia-mais');
-        botoesLeiaMais.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const bloco = btn.parentElement;
-                bloco.classList.toggle('expanded');
-                btn.textContent = bloco.classList.contains('expanded') ? 'Leia Menos' : 'Leia Mais';
-            });
-        });
-
-        // Carrossel simples
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-
-        function showSlide(n) {
-            if (!slides.length) return;
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-            slides[n].classList.add('active');
-            if (dots[n]) dots[n].classList.add('active');
-        }
-
-        function nextSlide() {
-            slideIndex = (slideIndex + 1) % slides.length;
-            showSlide(slideIndex);
-        }
-
-        function prevSlide() {
-            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-            showSlide(slideIndex);
-        }
-
-        const nextBtn = document.querySelector('.next');
-        const prevBtn = document.querySelector('.prev');
-
-        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-        dots.forEach((dot, i) => dot.addEventListener('click', () => {
-            slideIndex = i;
-            showSlide(slideIndex);
-        }));
-
-        // Auto slide
-        if (slides.length) setInterval(nextSlide, 7000);
-
-        // ofertas
-        document.querySelectorAll('.btn-copy-pix').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const pixKey = btn.closest('.oferta-card').querySelector('.pix-key').textContent;
-                navigator.clipboard.writeText(pixKey).then(() => {
-                    btn.textContent = 'PIX Copiado!';
-                    setTimeout(() => btn.textContent = 'Copiar PIX', 2000);
-                });
-            });
-        });
-
-        // validaçao do campo contato
-        const form = document.getElementById('formContato');
-        const nome = document.getElementById('nome');
-        const telefone = document.getElementById('telefone');
-
-        // Bloquear números e caracteres especiais no campo nome
-        nome.addEventListener('input', function() {
-            this.value = this.value.replace(/[^a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]/g, '');
-        });
-
-        // Bloquear letras no campo telefone
-        telefone.addEventListener('input', function() {
-            this.value = this.value.replace(/[^0-9]/g, '');
-        });
-
-        // Validação de campos obrigatórios
-        form.addEventListener('submit', function(e) {
-            if (!nome.value.trim() || !telefone.value.trim() || !form.mensagem.value.trim()) {
-                alert('Todos os campos são obrigatórios!');
-                e.preventDefault();
-            }
-        });
-
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        // Abre/fecha menu mobile
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Evitar que o dropdown feche ao clicar em filiais
-        const dropdownItems = document.querySelectorAll('.dropdown-menu li a');
-
-        dropdownItems.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.stopPropagation(); // impede o fechamento
-                // opcional: navega para a seção sem fechar o menu
-                // window.location.href = link.getAttribute('href');
-            });
         });
     </script>
 </body>
