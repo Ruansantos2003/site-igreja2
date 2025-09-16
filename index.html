@@ -84,6 +84,71 @@
             height: 100%;
             overflow: hidden;
         }
+        /* ------------------ MENU MOBILE ------------------ */
+        
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #000;
+            /* cor do botão */
+            z-index: 10001;
+            /* acima do menu */
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                background-color: #fff;
+                /* fundo do menu mobile */
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 60px 20px 20px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 10000;
+                box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+                overflow-y: auto;
+            }
+            .nav-links.active {
+                transform: translateX(0);
+                /* abre menu */
+            }
+            .nav-links li {
+                margin-bottom: 20px;
+                width: 100%;
+            }
+            .nav-links li a {
+                font-size: 18px;
+                text-decoration: none;
+                color: #000;
+                width: 100%;
+                display: block;
+            }
+            .menu-toggle {
+                display: block;
+                position: fixed;
+                top: 15px;
+                right: 20px;
+            }
+            body.menu-open::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.2);
+                z-index: 9999;
+            }
+        }
     </style>
 </head>
 
@@ -395,29 +460,27 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // -------------------------
-            // Menu mobile com toggle
             const menuToggleBtn = document.querySelector('.menu-toggle');
             const navMobile = document.querySelector('.nav-links');
 
             menuToggleBtn.addEventListener('click', () => {
-                navMobile.classList.toggle('active');
-                menuToggleBtn.classList.toggle('open');
+                navMobile.classList.toggle('active'); // abre/fecha
+                menuToggleBtn.classList.toggle('open'); // muda ícone se quiser
             });
 
-            // Fechar menu ao clicar em link
+            // Fecha menu ao clicar em qualquer link
             document.querySelectorAll('.nav-links li a').forEach(link => {
                 link.addEventListener('click', () => {
-                    if (navMobile.classList.contains('active')) {
-                        navMobile.classList.remove('active');
-                        menuToggleBtn.classList.remove('open');
-                    }
+                    navMobile.classList.remove('active');
+                    menuToggleBtn.classList.remove('open');
                 });
             });
 
-            // Fechar menu ao clicar fora
+            // Fecha menu ao clicar fora
             document.addEventListener('click', (e) => {
-                if (navMobile.classList.contains('active') && !navMobile.contains(e.target) && !menuToggleBtn.contains(e.target)) {
+                if (navMobile.classList.contains('active') &&
+                    !navMobile.contains(e.target) &&
+                    !menuToggleBtn.contains(e.target)) {
                     navMobile.classList.remove('active');
                     menuToggleBtn.classList.remove('open');
                 }
