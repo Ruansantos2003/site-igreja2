@@ -1579,3 +1579,82 @@ footer {
         gap: 25px;
     }
 }
+
+
+/* ===== Leia Mais ===== */
+
+.bloco-hiper .texto-completo {
+    display: none;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.bloco-hiper.expanded .texto-completo {
+    display: block;
+}
+
+
+/* ===== Menu Mobile ===== */
+
+
+/* Menu mobile apenas para telas pequenas */
+
+@media (max-width: 992px) {
+    /* Esconde o menu normal */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: right 0.5s ease;
+        z-index: 10000;
+        padding: 0;
+    }
+    .nav-links.active {
+        right: 0;
+    }
+    /* Ícone do menu mobile */
+    .menu-toggle {
+        display: block;
+        font-size: 28px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #111;
+        z-index: 10001;
+        transition: transform 0.3s ease;
+    }
+    .menu-toggle.open {
+        transform: rotate(90deg);
+    }
+    /* Esconde os links originais quando o menu mobile aparece */
+    .navbar .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+/* Para telas maiores, mantém o menu normal */
+
+@media (min-width: 993px) {
+    .menu-toggle {
+        display: none;
+    }
+    .nav-links {
+        position: static;
+        display: flex !important;
+        flex-direction: row;
+        height: auto;
+        right: 0;
+        background: none;
+        gap: 20px;
+    }
+}

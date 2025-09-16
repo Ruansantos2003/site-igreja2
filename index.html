@@ -396,9 +396,7 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             // -------------------------
-            // Menu mobile
-            // -------------------------
-            // Menu mobile com animação e ícone X
+            // Menu mobile com toggle
             const menuToggleBtn = document.querySelector('.menu-toggle');
             const navMobile = document.querySelector('.nav-links');
 
@@ -407,16 +405,25 @@
                 menuToggleBtn.classList.toggle('open');
             });
 
-            // Evitar fechamento do dropdown ao clicar em filiais
-            document.querySelectorAll('.dropdown-menu li a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.stopPropagation();
+            // Fechar menu ao clicar em link
+            document.querySelectorAll('.nav-links li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMobile.classList.contains('active')) {
+                        navMobile.classList.remove('active');
+                        menuToggleBtn.classList.remove('open');
+                    }
                 });
             });
 
-            // -------------------------
+            // Fechar menu ao clicar fora
+            document.addEventListener('click', (e) => {
+                if (navMobile.classList.contains('active') && !navMobile.contains(e.target) && !menuToggleBtn.contains(e.target)) {
+                    navMobile.classList.remove('active');
+                    menuToggleBtn.classList.remove('open');
+                }
+            });
+
             // Botões "Leia Mais"
-            // -------------------------
             document.querySelectorAll('.btn-leia-mais').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const bloco = btn.closest('.bloco-hiper');
