@@ -423,12 +423,12 @@
                 }
             });
 
-            // Botões "Leia Mais"
-            document.querySelectorAll('.btn-leia-mais').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const bloco = btn.closest('.bloco-hiper');
+            document.querySelectorAll('.btn-leia-mais').forEach(button => {
+                button.addEventListener('click', () => {
+                    const bloco = button.closest('.bloco-hiper');
                     bloco.classList.toggle('expanded');
-                    btn.textContent = bloco.classList.contains('expanded') ? 'Leia Menos' : 'Leia Mais';
+                    // opcional: mudar texto do botão
+                    button.textContent = bloco.classList.contains('expanded') ? 'Ler Menos' : 'Ler Mais';
                 });
             });
 
