@@ -1599,62 +1599,47 @@ footer {
 
 /* Menu mobile apenas para telas pequenas */
 
-@media (max-width: 992px) {
-    /* Esconde o menu normal */
+@media (max-width: 768px) {
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        display: flex;
+        right: 0;
+        height: 100vh;
+        width: 80%;
+        max-width: 300px;
+        background-color: #fff;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        transition: right 0.5s ease;
+        align-items: flex-start;
+        padding: 60px 20px 20px;
+        transform: translateX(100%) !important;
+        /* força ficar fora da tela */
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease, visibility 0.3s ease;
         z-index: 10000;
-        padding: 0;
+        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
     }
     .nav-links.active {
-        right: 0;
+        transform: translateX(0) !important;
+        opacity: 1;
+        visibility: visible;
     }
-    /* Ícone do menu mobile */
     .menu-toggle {
         display: block;
-        font-size: 28px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: #111;
+        position: fixed;
+        top: 15px;
+        right: 20px;
         z-index: 10001;
-        transition: transform 0.3s ease;
     }
-    .menu-toggle.open {
-        transform: rotate(90deg);
-    }
-    /* Esconde os links originais quando o menu mobile aparece */
-    .navbar .nav-links {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-
-/* Para telas maiores, mantém o menu normal */
-
-@media (min-width: 993px) {
-    .menu-toggle {
-        display: none;
-    }
-    .nav-links {
-        position: static;
-        display: flex !important;
-        flex-direction: row;
-        height: auto;
-        right: 0;
-        background: none;
-        gap: 20px;
+    body.menu-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 9999;
     }
 }
