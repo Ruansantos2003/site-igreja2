@@ -166,30 +166,25 @@
 
             <!-- Navegação -->
             <nav class="navbar" role="navigation" aria-label="Menu principal">
-                <ul class="nav-links">
-                    <li><a href="#topo-pagina">Início</a></li>
-                    <li><a href="#cultos">Cultos</a></li>
-                    <li><a href="#sobre">Sobre Nós</a></li>
-                    <li><a href="#ofertas">Ofertas</a></li>
+                <div class="nav-container">
+                    <ul class="nav-links">
+                        <li><a href="#topo-pagina">Início</a></li>
+                        <li><a href="#cultos">Cultos</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#ofertas">Ofertas</a></li>
 
-                    <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle">Filiais <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="filial-link" href="https://ruansantos2003.github.io/projeto-igreja/">Vila Natal</a></li>
-                        </ul>
-                    </li>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle">Filiais <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="filial-link" href="https://ruansantos2003.github.io/projeto-igreja/">Vila Natal</a></li>
+                            </ul>
+                        </li>
 
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
 
-                <!-- Redes Sociais -->
-                <div class="social-icons">
-                    <a href="https://instagram.com/ministerioapostolicoumnovotemp" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <button class="menu-toggle" aria-label="Abrir menu">☰</button>
                 </div>
-
-                <!-- Botão menu mobile -->
-                <button class="menu-toggle" aria-label="Abrir menu">☰</button>
             </nav>
 
         </div>
@@ -638,6 +633,46 @@
                     const dropdown = toggle.parentElement;
                     dropdown.classList.toggle('open');
                 });
+            });
+
+            document.addEventListener('DOMContentLoaded', () => {
+
+                const menuToggleBtn = document.querySelector('.menu-toggle');
+                const navMobile = document.querySelector('.nav-links');
+
+                // Abre/fecha menu mobile
+                menuToggleBtn.addEventListener('click', () => {
+                    navMobile.classList.toggle('active');
+                    menuToggleBtn.classList.toggle('open');
+                });
+
+                // Fecha menu ao clicar em link
+                document.querySelectorAll('.nav-links li a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMobile.classList.remove('active');
+                        menuToggleBtn.classList.remove('open');
+                    });
+                });
+
+                // Fecha menu ao clicar fora
+                document.addEventListener('click', (e) => {
+                    if (navMobile.classList.contains('active') &&
+                        !navMobile.contains(e.target) &&
+                        !menuToggleBtn.contains(e.target)) {
+                        navMobile.classList.remove('active');
+                        menuToggleBtn.classList.remove('open');
+                    }
+                });
+
+                // Dropdown mobile
+                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const dropdown = toggle.parentElement;
+                        dropdown.classList.toggle('open');
+                    });
+                });
+
             });
 
             backBtn.addEventListener('click', closeOverlay);
