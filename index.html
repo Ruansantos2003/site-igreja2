@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="img/img5-removebg-preview.png" type="image/png">
 
-    <!-- Estilos do overlay (iframe fullscreen) -->
 
 </head>
 
@@ -333,43 +332,114 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            const menuToggleBtn = document.querySelector('.menu-toggle');
-            const navMobile = document.querySelector('.nav-links');
+            // -------------------------
+            // MENU MOBILE
+            // -------------------------
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
 
-            menuToggleBtn.addEventListener('click', () => {
-                navMobile.classList.toggle('active'); // abre/fecha
-                menuToggleBtn.classList.toggle('open'); // muda ícone se quiser
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('open');
             });
 
             // Fecha menu ao clicar em qualquer link
-            document.querySelectorAll('.nav-links li a').forEach(link => {
+            navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
-                    navMobile.classList.remove('active');
-                    menuToggleBtn.classList.remove('open');
+                    navLinks.classList.remove('active');
+                    menuToggle.classList.remove('open');
                 });
             });
 
             // Fecha menu ao clicar fora
             document.addEventListener('click', (e) => {
-                if (navMobile.classList.contains('active') &&
-                    !navMobile.contains(e.target) &&
-                    !menuToggleBtn.contains(e.target)) {
-                    navMobile.classList.remove('active');
-                    menuToggleBtn.classList.remove('open');
+                if (navLinks.classList.contains('active') &&
+                    !navLinks.contains(e.target) &&
+                    !menuToggle.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    menuToggle.classList.remove('open');
                 }
             });
 
-            document.querySelectorAll('.btn-leia-mais').forEach(button => {
-                button.addEventListener('click', () => {
-                    const bloco = button.closest('.bloco-hiper');
-                    bloco.classList.toggle('expanded');
-                    // opcional: mudar texto do botão
-                    button.textContent = bloco.classList.contains('expanded') ? 'Ler Menos' : 'Ler Mais';
+            // -------------------------
+            // DROPDOWN FILIAIS
+            // -------------------------
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const dropdown = toggle.parentElement;
+                    dropdown.classList.toggle('open');
                 });
             });
 
             // -------------------------
-            // Carrossel simples
+            // OVERLAY FILIAIS
+            // -------------------------
+            const filialLinks = document.querySelectorAll('.filial-link');
+            const overlay = document.getElementById('filial-overlay');
+            const iframe = document.getElementById('filial-iframe');
+            const backBtn = document.getElementById('filial-back');
+            const filialTitle = overlay.querySelector('.filial-title');
+
+            let iframeLoaded = false;
+            let openTimeout = null;
+
+            function openFilial(url, label) {
+                iframeLoaded = false;
+                filialTitle.textContent = label || 'Filial';
+                overlay.classList.add('open');
+                overlay.setAttribute('aria-hidden', 'false');
+                iframe.src = url;
+                document.documentElement.classList.add('filial-open');
+
+                if (!history.state || !history.state.overlay) {
+                    history.pushState({
+                        overlay: true
+                    }, '', '');
+                }
+
+                openTimeout = setTimeout(() => {
+                    if (!iframeLoaded) {
+                        closeOverlay();
+                        location.href = url; // fallback para abrir no mesmo tab
+                    }
+                }, 1800);
+            }
+
+            function closeOverlay() {
+                clearTimeout(openTimeout);
+                overlay.classList.remove('open');
+                overlay.setAttribute('aria-hidden', 'true');
+                iframe.src = 'about:blank';
+                document.documentElement.classList.remove('filial-open');
+
+                if (history.state && history.state.overlay) {
+                    history.back();
+                }
+            }
+
+            filialLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openFilial(link.href, link.textContent.trim());
+                });
+            });
+
+            iframe.addEventListener('load', () => {
+                iframeLoaded = true;
+                clearTimeout(openTimeout);
+            });
+
+            backBtn.addEventListener('click', closeOverlay);
+
+            window.addEventListener('popstate', () => {
+                if (overlay.classList.contains('open')) {
+                    closeOverlay();
+                }
+            });
+
+            // -------------------------
+            // CARROSSEL SIMPLES
             // -------------------------
             let slideIndex = 0;
             const slides = document.querySelectorAll('.slide');
@@ -406,7 +476,7 @@
             if (slides.length) setInterval(nextSlide, 7000);
 
             // -------------------------
-            // Copiar PIX
+            // BOTÃO COPIAR PIX
             // -------------------------
             document.querySelectorAll('.btn-copy-pix').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -419,7 +489,7 @@
             });
 
             // -------------------------
-            // Validação formulário contato
+            // FORMULÁRIO DE CONTATO
             // -------------------------
             const form = document.getElementById('formContato');
             const nome = document.getElementById('nome');
@@ -445,123 +515,14 @@
             });
 
             // -------------------------
-            // Overlay Filiais
+            // BOTÃO LEIA MAIS
             // -------------------------
-            const filialLinks = document.querySelectorAll('.filial-link');
-            const overlay = document.getElementById('filial-overlay');
-            const iframe = document.getElementById('filial-iframe');
-            const backBtn = document.getElementById('filial-back');
-            const filialTitle = overlay.querySelector('.filial-title');
-
-            let iframeLoaded = false;
-            let openTimeout = null;
-
-            function openFilial(url, label) {
-                iframeLoaded = false;
-                filialTitle.textContent = label || 'Filial';
-                overlay.classList.add('open');
-                overlay.setAttribute('aria-hidden', 'false');
-                iframe.src = url;
-                document.documentElement.classList.add('filial-open');
-
-                if (!history.state || !history.state.overlay) {
-                    history.pushState({
-                        overlay: true
-                    }, '', '');
-                }
-
-                openTimeout = setTimeout(() => {
-                    if (!iframeLoaded) {
-                        overlay.classList.remove('open');
-                        overlay.setAttribute('aria-hidden', 'true');
-                        iframe.src = 'about:blank';
-                        document.documentElement.classList.remove('filial-open');
-                        location.href = url;
-                    }
-                }, 1800);
-            }
-
-            function closeOverlay() {
-                clearTimeout(openTimeout);
-                overlay.classList.remove('open');
-                overlay.setAttribute('aria-hidden', 'true');
-                iframe.src = 'about:blank';
-                document.documentElement.classList.remove('filial-open');
-
-                if (history.state && history.state.overlay) {
-                    history.back();
-                }
-            }
-
-            filialLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    openFilial(link.href, link.textContent.trim());
+            document.querySelectorAll('.btn-leia-mais').forEach(button => {
+                button.addEventListener('click', () => {
+                    const bloco = button.closest('.bloco-hiper');
+                    bloco.classList.toggle('expanded');
+                    button.textContent = bloco.classList.contains('expanded') ? 'Ler Menos' : 'Leia Mais';
                 });
-            });
-
-            iframe.addEventListener('load', () => {
-                iframeLoaded = true;
-                clearTimeout(openTimeout);
-            });
-
-            // Toggle dropdown Filiais
-            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-                toggle.addEventListener('click', (e) => {
-                    const dropdown = toggle.parentElement;
-                    dropdown.classList.toggle('open');
-                });
-            });
-
-            document.addEventListener('DOMContentLoaded', () => {
-
-                const menuToggleBtn = document.querySelector('.menu-toggle');
-                const navMobile = document.querySelector('.nav-links');
-
-                // Abre/fecha menu mobile
-                menuToggleBtn.addEventListener('click', () => {
-                    navMobile.classList.toggle('active');
-                    menuToggleBtn.classList.toggle('open');
-                });
-
-                // Fecha menu ao clicar em link
-                document.querySelectorAll('.nav-links li a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navMobile.classList.remove('active');
-                        menuToggleBtn.classList.remove('open');
-                    });
-                });
-
-                // Fecha menu ao clicar fora
-                document.addEventListener('click', (e) => {
-                    if (navMobile.classList.contains('active') &&
-                        !navMobile.contains(e.target) &&
-                        !menuToggleBtn.contains(e.target)) {
-                        navMobile.classList.remove('active');
-                        menuToggleBtn.classList.remove('open');
-                    }
-                });
-
-                // Dropdown mobile
-                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-                    toggle.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const dropdown = toggle.parentElement;
-                        dropdown.classList.toggle('open');
-                    });
-                });
-
-            });
-
-            backBtn.addEventListener('click', closeOverlay);
-
-            window.addEventListener('popstate', () => {
-                if (overlay.classList.contains('open')) {
-                    overlay.classList.remove('open');
-                    overlay.setAttribute('aria-hidden', 'true');
-                    iframe.src = 'about:blank';
-                    document.documentElement.classList.remove('filial-open');
-                }
             });
 
         });

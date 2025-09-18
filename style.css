@@ -53,10 +53,7 @@ header {
 }
 
 
-/* --- Navegação --- */
-
-
-/* ===== HEADER ===== */
+/* ===== HEADER NAV ===== */
 
 .header-container {
     display: flex;
@@ -138,18 +135,6 @@ header {
 
 .social-icons a:hover {
     color: #000000;
-}
-
-
-/* Menu mobile */
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 26px;
-    color: white;
-    cursor: pointer;
 }
 
 
@@ -306,6 +291,9 @@ header {
 }
 
 
+/*FINAL CARROSSE*/
+
+
 /* ===== Nossas Unidades Branco e Azul ===== */
 
 .unidades-hiper {
@@ -387,6 +375,9 @@ header {
         gap: 20px;
     }
 }
+
+
+/* FINAL UNIDADES*/
 
 
 /* ===== Pastores Presidentes ===== */
@@ -1614,61 +1605,6 @@ footer {
     display: block;
 }
 
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    position: fixed;
-    top: 15px;
-    right: 20px;
-    z-index: 10001;
-}
-
-@media (max-width: 768px) {
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: auto;
-        right: 0;
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
-        padding: 60px 20px 20px;
-        background: #fff;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
-        z-index: 10000;
-    }
-    .nav-links {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-        padding: 0;
-        margin: 0;
-    }
-    .nav-links.active {
-        transform: translateX(0);
-    }
-    .menu-toggle {
-        display: block;
-    }
-    body.menu-open::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.2);
-        z-index: 9999;
-    }
-}
-
 
 /* Menu padrão */
 
@@ -1694,41 +1630,6 @@ footer {
 
 .dropdown.open .dropdown-menu {
     display: flex;
-}
-
-
-/* Mobile */
-
-@media (max-width: 768px) {
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100vh;
-        width: 80%;
-        max-width: 300px;
-        background-color: #fff;
-        flex-direction: column;
-        padding: 60px 20px 20px;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        z-index: 10000;
-        overflow-y: auto;
-    }
-    .nav-links.active {
-        transform: translateX(0);
-    }
-    .menu-toggle {
-        display: block;
-        position: fixed;
-        top: 15px;
-        right: 20px;
-        font-size: 28px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        z-index: 10001;
-    }
 }
 
 
@@ -1791,49 +1692,69 @@ html.filial-open {
     overflow: hidden;
 }
 
-
-/* ------------------ MENU MOBILE ------------------ */
-
-
-/* Botão escondido no desktop */
-
 .menu-toggle {
     display: none;
-    font-size: 28px;
+    font-size: 1.5rem;
     background: none;
     border: none;
     cursor: pointer;
-    color: #fff;
+    transition: transform 0.3s;
 }
 
 
-/* Botão visível no celular */
+/* =========================
+   MEDIA QUERIES MOBILE
+========================= */
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100%;
+        width: 250px;
+        background: #fff;
+        flex-direction: column;
+        gap: 0;
+        padding: 60px 20px;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+    }
+    .nav-links.active {
+        right: 0;
+    }
+    .nav-links li {
+        margin-bottom: 10px;
+    }
+    .nav-links li a {
+        font-size: 1.1rem;
+        padding: 10px 0;
+    }
+    /* Dropdown mobile */
+    .dropdown-menu {
+        position: relative;
+        top: 0;
+        left: 0;
+        border: none;
+        box-shadow: none;
+        display: none;
+        padding-left: 15px;
+    }
+    .dropdown.open .dropdown-menu {
+        display: flex;
+        flex-direction: column;
+    }
     .menu-toggle {
         display: block;
     }
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background: #114ccb;
-        flex-direction: column;
-        width: 220px;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-in-out;
-        border-radius: 0 0 10px 10px;
-    }
-    .nav-links.active {
-        max-height: 500px;
-    }
-    .nav-links li {
-        margin: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .nav-links li a {
-        display: block;
-        padding: 12px;
-    }
+}
+
+
+/* =========================
+   ANIMAÇÃO BOTÃO HAMBURGER
+========================= */
+
+.menu-toggle.open {
+    transform: rotate(90deg);
 }
