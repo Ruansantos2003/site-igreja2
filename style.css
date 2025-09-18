@@ -14,6 +14,13 @@ body {
 }
 
 
+/* --- Variáveis CSS --- */
+
+:root {
+    --azul-principal: #2575fc;
+}
+
+
 /* --- Cabeçalho --- */
 
 header {
@@ -126,7 +133,6 @@ header {
         gap: 15px;
         padding: 10px 0;
     }
-    /* Dropdown mobile */
     .nav-links li.dropdown .dropdown-menu {
         position: static;
         display: none;
@@ -162,7 +168,6 @@ header {
     position: relative;
     width: 100%;
     height: 100vh;
-    /* altura total da tela */
     overflow: hidden;
 }
 
@@ -173,7 +178,6 @@ header {
     width: 100%;
     height: 100%;
     background-size: cover;
-    /* cobre todo o espaço sem distorcer */
     background-position: center;
     opacity: 0;
     transition: opacity 1s ease-in-out;
@@ -218,7 +222,7 @@ header {
 }
 
 
-/* Overlay escuro para melhor contraste */
+/* Overlay escuro */
 
 .slide .overlay {
     position: absolute;
@@ -294,7 +298,34 @@ header {
 }
 
 
-/* Responsividade */
+/* Responsividade slides */
+
+@media (max-width: 768px) {
+    .slide-content h2 {
+        font-size: 2rem;
+    }
+    .slide-content h3 {
+        font-size: 1.5rem;
+    }
+    .slide-content p {
+        font-size: 1rem;
+    }
+}
+
+
+/* FINAL CARROSSEL */
+
+
+/* --- Observação --- */
+
+
+/* Corrigido comentário não fechado no final do endereço */
+
+
+/*final endereço*/
+
+
+/* restante do CSS permanece igual sem alterar cores, gradientes ou design */
 
 @media (max-width: 768px) {
     .slide-content h2 {
@@ -1190,7 +1221,8 @@ header {
 }
 
 
-/*final endereço
+/*final endereço*/
+
 
 /* Animação de ícones flutuantes */
 

@@ -26,7 +26,62 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="img/img5-removebg-preview.png" type="image/png">
 
-
+    <style>
+        /* ===== MENU MOBILE ===== */
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                background: linear-gradient(135deg, #114ccb, #2575fc);
+                padding: 20px 0;
+                transition: left 0.3s ease-in-out;
+                z-index: 999;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .nav-links li {
+                text-align: center;
+                margin: 10px 0;
+            }
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                z-index: 1001;
+            }
+            /* Dropdown mobile */
+            .nav-links li.dropdown .dropdown-menu {
+                display: none;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.1);
+                padding: 10px 0;
+                margin-top: 5px;
+            }
+            .nav-links li.dropdown.open .dropdown-menu {
+                display: flex;
+            }
+        }
+    </style>
 </head>
 
 <body id="topo-pagina">
@@ -63,7 +118,6 @@
                     <button class="menu-toggle" aria-label="Abrir menu">☰</button>
                 </div>
             </nav>
-
         </div>
     </header>
 
@@ -126,8 +180,7 @@
         <!-- ===== Pastores Presidentes ===== -->
         <section id="pastores" class="pastores-hiper">
             <div class="pastores-container-hiper">
-                <h2>
-                    </i> Pastores Presidentes</h2>
+                <h2>Pastores Presidentes</h2>
                 <p class="intro-pastores">
                     Conheça os líderes que guiam o Ministério Apostólico Um Novo Tempo com fé, amor e dedicação.
                 </p>
@@ -153,8 +206,7 @@
         <!-- ===== Sobre Nós ===== -->
         <section id="sobre" class="sobre-nos-hiper">
             <div class="sobre-container-hiper">
-                <h2>
-                    </i> Sobre Nós</h2>
+                <h2>Sobre Nós</h2>
                 <p class="intro">
                     No <strong>Ministério Apostólico Um Novo Tempo</strong>, a fé se transforma em ação, a esperança se torna realidade, e o amor de Deus guia cada passo da nossa comunidade.
                 </p>
@@ -211,6 +263,8 @@
                             <h3>Vila Natal</h3>
                         </a>
                     </div>
+                </div>
+            </div>
         </section>
 
         <!-- ===== Nossos Cultos ===== -->
@@ -239,36 +293,30 @@
             </div>
         </section>
 
+        <!-- ===== Ofertas ===== -->
         <section id="ofertas" class="ofertas-modernas">
             <div class="ofertas-container">
-                <!-- Header da Seção -->
                 <div class="ofertas-header">
                     <h2>Dízimos e Ofertas</h2>
                     <p>Contribua com a obra de Deus de forma segura e prática. Escolha sua forma de doação.</p>
                 </div>
 
-                <!-- Grid de Cards -->
                 <div class="ofertas-grid">
-
-                    <!-- Card Banco -->
                     <div class="oferta-card moderno">
                         <div class="card-icon"><i class="fas fa-university"></i></div>
                         <h3>Banco Caixa Econômica</h3>
                         <p>Conta Corrente: 1234-5 <br> Agência: 6789 <br> Titular: Igreja Exemplo</p>
                     </div>
 
-                    <!-- Card PIX -->
                     <div class="oferta-card moderno">
                         <div class="card-icon"><i class="fas fa-qrcode"></i></div>
                         <h3>Chave PIX</h3>
                         <p class="pix-key">contato@igreja.com.br</p>
                         <button class="btn-copy-pix" onclick="copyPix()">Copiar PIX</button>
                     </div>
-
                 </div>
             </div>
         </section>
-
 
         <!-- ===== Contato ===== -->
         <section id="contato" class="contato-hiper">
@@ -278,11 +326,9 @@
 
                 <form class="contato-form-hiper" id="formContato">
                     <h3>Pedido de Oração</h3>
-
                     <input type="text" id="nome" placeholder="Nome" required maxlength="20">
                     <input type="text" id="telefone" placeholder="Telefone / WhatsApp" required maxlength="15">
                     <textarea id="mensagem" placeholder="Mensagem" rows="5" required maxlength="500"></textarea>
-
                     <button type="submit">Enviar</button>
                 </form>
             </div>
@@ -301,14 +347,13 @@
                 <div class="endereco-mapa">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.123456789!2d-46.633308!3d-23.550520!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c123456789%3A0xabcdef1234567890!2sMinist%C3%A9rio%20Apost%C3%B3lico%20Um%20Novo%20Tempo!5e0!3m2!1spt-BR!2sbr!4v1694771234567!5m2!1spt-BR!2sbr"
                         width="100%" height="250" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+                    </iframe>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- Overlay que mostra o site da filial -->
+    <!-- Overlay Filiais -->
     <div id="filial-overlay" class="filial-overlay" aria-hidden="true">
         <div class="filial-bar">
             <button id="filial-back" aria-label="Voltar">← Voltar</button>
@@ -322,7 +367,6 @@
         <p>© Ministério Apostólico Um Novo Tempo - 2025 - Todos os direitos reservados. <strong>CodeByRuan</strong></p>
     </footer>
 
-
     <!-- WhatsApp -->
     <a href="https://wa.me/5511911127755" id="whatsapp-button" target="_blank" title="Fale conosco via WhatsApp">
         <i class="fab fa-whatsapp"></i>
@@ -333,8 +377,15 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             // -------------------------
-            // DROPDOWN FILIAIS
+            // MENU MOBILE
             // -------------------------
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
             document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
                 toggle.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -344,7 +395,7 @@
             });
 
             // -------------------------
-            // OVERLAY FILIAIS
+            // FILIAIS OVERLAY
             // -------------------------
             const filialLinks = document.querySelectorAll('.filial-link');
             const overlay = document.getElementById('filial-overlay');
@@ -372,7 +423,7 @@
                 openTimeout = setTimeout(() => {
                     if (!iframeLoaded) {
                         closeOverlay();
-                        location.href = url; // fallback para abrir no mesmo tab
+                        location.href = url;
                     }
                 }, 1800);
             }
@@ -410,7 +461,7 @@
             });
 
             // -------------------------
-            // CARROSSEL SIMPLES
+            // CARROSSEL
             // -------------------------
             let slideIndex = 0;
             const slides = document.querySelectorAll('.slide');
@@ -460,24 +511,21 @@
             });
 
             // -------------------------
-            // FORMULÁRIO DE CONTATO
+            // FORMULÁRIO CONTATO
             // -------------------------
             const form = document.getElementById('formContato');
             const nome = document.getElementById('nome');
             const telefone = document.getElementById('telefone');
             const mensagem = document.getElementById('mensagem');
 
-            // Bloquear números e caracteres especiais no campo nome
             nome.addEventListener('input', function() {
                 this.value = this.value.replace(/[^a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]/g, '');
             });
 
-            // Bloquear letras no campo telefone
             telefone.addEventListener('input', function() {
                 this.value = this.value.replace(/\D/g, '');
             });
 
-            // Validação de campos obrigatórios
             form.addEventListener('submit', function(e) {
                 if (!nome.value.trim() || !telefone.value.trim() || !mensagem.value.trim()) {
                     alert('Todos os campos são obrigatórios!');
@@ -495,11 +543,8 @@
                     button.textContent = bloco.classList.contains('expanded') ? 'Ler Menos' : 'Leia Mais';
                 });
             });
-
         });
     </script>
 </body>
-
-</html>
 
 </html>
