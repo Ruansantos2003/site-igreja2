@@ -331,31 +331,7 @@
     <!-- JS -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                menuToggle.classList.toggle('open');
-                document.body.classList.toggle('menu-open'); // overlay ativado
-            });
 
-            // Fecha menu ao clicar fora
-            document.addEventListener('click', (e) => {
-                if (navLinks.classList.contains('active') &&
-                    !navLinks.contains(e.target) &&
-                    !menuToggle.contains(e.target)) {
-                    navLinks.classList.remove('active');
-                    menuToggle.classList.remove('open');
-                    document.body.classList.remove('menu-open');
-                }
-            });
-
-            // Fecha menu ao clicar em qualquer link
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    menuToggle.classList.remove('open');
-                    document.body.classList.remove('menu-open');
-                });
-            });
             // -------------------------
             // DROPDOWN FILIAIS
             // -------------------------
