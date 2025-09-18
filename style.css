@@ -1706,14 +1706,19 @@ html.filial-open {
    MEDIA QUERIES MOBILE
 ========================= */
 
+
+/* Mobile fix: menu inicia fechado e não mostra branco por padrão */
+
 @media (max-width: 992px) {
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: -250px;
+        /* inicia fora da tela */
         height: 100%;
         width: 250px;
-        background: #fff;
+        background: #0d6be6;
+        /* mantido fundo azul */
         flex-direction: column;
         gap: 0;
         padding: 60px 20px;
@@ -1723,6 +1728,7 @@ html.filial-open {
     }
     .nav-links.active {
         right: 0;
+        /* só aparece quando ativo */
     }
     .nav-links li {
         margin-bottom: 10px;
@@ -1730,23 +1736,22 @@ html.filial-open {
     .nav-links li a {
         font-size: 1.1rem;
         padding: 10px 0;
+        color: #fff;
+        /* link permanece branco */
     }
     /* Dropdown mobile */
     .dropdown-menu {
-        position: relative;
-        top: 0;
-        left: 0;
-        border: none;
-        box-shadow: none;
         display: none;
+        /* inicia fechado */
+        flex-direction: column;
         padding-left: 15px;
     }
     .dropdown.open .dropdown-menu {
         display: flex;
-        flex-direction: column;
     }
     .menu-toggle {
         display: block;
+        /* botão visível */
     }
 }
 
