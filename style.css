@@ -1730,3 +1730,110 @@ footer {
         z-index: 10001;
     }
 }
+
+
+/* overlay que mostra o site da filial em fullscreen */
+
+.filial-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    background: #ffffff;
+    z-index: 9999;
+}
+
+.filial-overlay.open {
+    display: flex;
+}
+
+.filial-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 10000;
+}
+
+.filial-bar .filial-title {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#filial-back {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#filial-back:active {
+    transform: translateY(1px);
+}
+
+#filial-iframe {
+    flex: 1;
+    width: 100%;
+    height: calc(100vh - 56px);
+    border: none;
+}
+
+
+/* pequeno ajuste para evitar salto atrás quando ocultar overflow */
+
+html.filial-open {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+/* ------------------ MENU MOBILE ------------------ */
+
+
+/* Botão escondido no desktop */
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+
+/* Botão visível no celular */
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #114ccb;
+        flex-direction: column;
+        width: 220px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        border-radius: 0 0 10px 10px;
+    }
+    .nav-links.active {
+        max-height: 500px;
+    }
+    .nav-links li {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .nav-links li a {
+        display: block;
+        padding: 12px;
+    }
+}
