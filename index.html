@@ -32,6 +32,7 @@
         .nav-links {
             display: flex;
             gap: 20px;
+            transition: left 0.3s ease-in-out;
         }
         
         .menu-toggle {
@@ -41,26 +42,48 @@
             border: none;
             color: white;
             cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-toggle.active {
+            transform: rotate(90deg);
         }
         
         @media (max-width: 768px) {
             .nav-links {
                 flex-direction: column;
                 position: fixed;
-                top: 60px;
+                top: 0;
                 left: -100%;
-                width: 100%;
-                background: linear-gradient(135deg, #114ccb, #2575fc);
-                padding: 20px 0;
+                width: 75%;
+                height: 100%;
+                background: rgba(17, 76, 203, 0.95);
+                backdrop-filter: blur(8px);
+                padding: 80px 20px;
                 transition: left 0.3s ease-in-out;
                 z-index: 999;
+                box-shadow: 2px 0 12px rgba(0, 0, 0, 0.4);
             }
             .nav-links.active {
                 left: 0;
             }
             .nav-links li {
-                text-align: center;
-                margin: 10px 0;
+                text-align: left;
+                margin: 20px 0;
+                list-style: none;
+            }
+            .nav-links li a {
+                display: block;
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: #fff;
+                text-decoration: none;
+                padding: 10px;
+                border-radius: 8px;
+                transition: background 0.3s ease;
+            }
+            .nav-links li a:hover {
+                background: rgba(255, 255, 255, 0.2);
             }
             .menu-toggle {
                 display: block;
@@ -69,16 +92,22 @@
                 right: 20px;
                 z-index: 1001;
             }
-            /* Dropdown mobile */
+            /* Dropdown estilizado */
             .nav-links li.dropdown .dropdown-menu {
                 display: none;
                 flex-direction: column;
                 background: rgba(255, 255, 255, 0.1);
-                padding: 10px 0;
-                margin-top: 5px;
+                margin-top: 10px;
+                border-radius: 8px;
+                overflow: hidden;
             }
             .nav-links li.dropdown.open .dropdown-menu {
                 display: flex;
+            }
+            .dropdown-menu li a {
+                padding: 10px 15px;
+                font-size: 1rem;
+                color: #fff;
             }
         }
     </style>
@@ -104,14 +133,12 @@
                         <li><a href="#cultos">Cultos</a></li>
                         <li><a href="#sobre">Sobre Nós</a></li>
                         <li><a href="#ofertas">Ofertas</a></li>
-
                         <li class="dropdown">
                             <a href="javascript:void(0)" class="dropdown-toggle">Filiais <i class="fas fa-chevron-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a class="filial-link" href="https://ruansantos2003.github.io/projeto-igreja/">Vila Natal</a></li>
                             </ul>
                         </li>
-
                         <li><a href="#contato">Contato</a></li>
                     </ul>
 
@@ -120,6 +147,7 @@
             </nav>
         </div>
     </header>
+
 
     <main id="conteudo-principal">
         <!-- Carrossel -->
@@ -382,10 +410,21 @@
             const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
 
+            // Abrir/fechar menu
             menuToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
             });
 
+            // Fechar menu ao clicar em um link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
+
+            // Dropdown
             document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
                 toggle.addEventListener('click', (e) => {
                     e.preventDefault();
