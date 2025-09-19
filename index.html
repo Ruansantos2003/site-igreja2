@@ -27,13 +27,85 @@
     <link rel="icon" href="img/img5-removebg-preview.png" type="image/png">
 
     <style>
-        /* ===== MENU MOBILE ===== */
+            /* ===== MENU MOBILE ===== */
+        /* ===== RESET ===== */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #114ccb, #2575fc);
+            padding: 15px 20px;
+            position: relative;
+        }
+        /* ===== MENU DESKTOP ===== */
         
         .nav-links {
             display: flex;
             gap: 20px;
-            transition: left 0.3s ease-in-out;
+            list-style: none;
+            justify-content: flex-end;
         }
+        
+        .nav-links li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links li a:hover {
+            color: #ddd;
+        }
+        /* ===== DROPDOWN NO DESKTOP ===== */
+        
+        .nav-links li.dropdown {
+            position: relative;
+        }
+        
+        .nav-links li.dropdown .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+        }
+        
+        .nav-links li.dropdown .dropdown-menu li {
+            margin: 0;
+            list-style: none;
+        }
+        
+        .nav-links li.dropdown .dropdown-menu li a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-links li.dropdown .dropdown-menu li a:hover {
+            background: #f0f0f0;
+        }
+        
+        @media (min-width: 769px) {
+            .nav-links li.dropdown:hover .dropdown-menu {
+                display: block;
+            }
+        }
+        /* ===== MENU MOBILE ===== */
         
         .menu-toggle {
             display: none;
@@ -42,14 +114,16 @@
             border: none;
             color: white;
             cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .menu-toggle.active {
-            transform: rotate(90deg);
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            z-index: 1001;
         }
         
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
             .nav-links {
                 flex-direction: column;
                 position: fixed;
@@ -68,9 +142,7 @@
                 left: 0;
             }
             .nav-links li {
-                text-align: left;
                 margin: 20px 0;
-                list-style: none;
             }
             .nav-links li a {
                 display: block;
@@ -85,14 +157,7 @@
             .nav-links li a:hover {
                 background: rgba(255, 255, 255, 0.2);
             }
-            .menu-toggle {
-                display: block;
-                position: absolute;
-                top: 15px;
-                right: 20px;
-                z-index: 1001;
-            }
-            /* Dropdown estilizado */
+            /* Dropdown no mobile */
             .nav-links li.dropdown .dropdown-menu {
                 display: none;
                 flex-direction: column;
@@ -110,6 +175,56 @@
                 color: #fff;
             }
         }
+        /* ===== SEÇÃO SOBRE NÓS ===== */
+        
+        .sobre-nos {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+        
+        .sobre-nos h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #114ccb;
+        }
+        
+        .bloco-hiper .texto-curto {
+            font-size: 1.1rem;
+            color: #444;
+        }
+        
+        .bloco-hiper .texto-completo {
+            display: none;
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #555;
+        }
+        /* Texto completo escondido por padrão */
+        
+        .bloco-hiper .texto-completo {
+            display: none;
+            transition: all 0.3s ease;
+        }
+        /* Mostrar texto completo quando expandido */
+        
+        .bloco-hiper.expanded .texto-completo {
+            display: block;
+            .btn-leia-mais {
+                margin-top: 20px;
+                background: #114ccb;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 1rem;
+                transition: background 0.3s ease;
+            }
+            .btn-leia-mais:hover {
+                background: #0d3aa6;
+            }
     </style>
 </head>
 
