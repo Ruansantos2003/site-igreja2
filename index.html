@@ -407,29 +407,28 @@
             // -------------------------
             // MENU MOBILE
             // -------------------------
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector(".menu-toggle");
+            const navLinks = document.querySelector(".nav-links");
 
-            // Abrir/fechar menu
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                menuToggle.classList.toggle('active');
+            // Abrir / fechar menu ao clicar no botão
+            menuToggle.addEventListener("click", () => {
+                navLinks.classList.toggle("active");
+                menuToggle.classList.toggle("active");
             });
 
-            // Fechar menu ao clicar em um link
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    menuToggle.classList.remove('active');
+            // Fechar menu ao clicar em qualquer link
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                link.addEventListener("click", () => {
+                    navLinks.classList.remove("active");
+                    menuToggle.classList.remove("active");
                 });
             });
 
-            // Dropdown
-            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-                toggle.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const dropdown = toggle.parentElement;
-                    dropdown.classList.toggle('open');
+            // Dropdown toggle
+            document.querySelectorAll(".dropdown > a").forEach(dropdownToggle => {
+                dropdownToggle.addEventListener("click", e => {
+                    e.preventDefault(); // impedir redirecionamento
+                    dropdownToggle.parentElement.classList.toggle("open");
                 });
             });
 
